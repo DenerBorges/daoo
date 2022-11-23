@@ -16,6 +16,6 @@
     @else
     <p>Projeto não encontrado! </p>
     @endif
-    <a href="http://127.0.0.1:8000/projetos">Voltar</a>
+    <a href="http://127.0.0.1:8000/projetos">Voltar para página inicial</a>
 </body>
 </html>

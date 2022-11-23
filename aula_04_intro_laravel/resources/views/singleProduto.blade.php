@@ -18,6 +18,6 @@
     @else
     <p>Produto não encontrado! </p>
     @endif
-    <a href="http://127.0.0.1:8000/produtos">Voltar</a>
+    <a href="http://127.0.0.1:8000/produtos">Voltar para página inicial</a>
 </body>
 </html>
