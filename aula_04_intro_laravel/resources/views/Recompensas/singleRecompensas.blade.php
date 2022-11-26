@@ -16,6 +16,6 @@
     @else
     <p>Recompensa não encontrada! </p>
     @endif
-    <a href="http://127.0.0.1:8000/recompensas">Voltar</a>
+    <a href="http://127.0.0.1:8000/recompensas">Voltar para página inicial</a>
 </body>
 </html>

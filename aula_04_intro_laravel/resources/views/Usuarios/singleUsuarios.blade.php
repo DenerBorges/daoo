@@ -17,6 +17,6 @@
     @else
     <p>Usuário não encontrado! </p>
     @endif
-    <a href="http://127.0.0.1:8000/usuarios">Voltar</a>
+    <a href="http://127.0.0.1:8000/usuarios">Voltar para página inicial</a>
 </body>
 </html>
