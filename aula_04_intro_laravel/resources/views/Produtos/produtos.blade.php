@@ -27,6 +27,10 @@
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>
                 <td>{{($produto->importado)?'Sim':'Não'}}</td>
+                <td>
+                    <a href="{{route('editprod',$produto->id)}}">editar</a> |
+                    <a href="{{route('deleteprod',$produto->id)}}">deletar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -34,5 +38,7 @@
     @else
     <p>Produtos não encontrados! </p>
     @endif
+    <br>
+    <a href="/produto"><button>Criar Produto</button></a>
 </body>
 </html>

@@ -25,6 +25,10 @@
                 <td>{{$projeto->nome}}</td>
                 <td>R${{$projeto->meta_de_valor}}</td>
                 <td>{{$projeto->dias_para_atingir}}</td>
+                <td>
+                    <a href="{{route('editproj',$projeto->id)}}">editar</a> |
+                    <a href="{{route('deleteproj',$projeto->id)}}">deletar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -32,5 +36,7 @@
     @else
     <p>Projetos não encontrados! </p>
     @endif
+    <br>
+    <a href="/projeto"><button>Criar Projetos</button></a>
 </body>
 </html>

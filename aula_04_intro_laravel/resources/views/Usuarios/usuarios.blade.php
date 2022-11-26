@@ -14,7 +14,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
-                <th>E-mail</th>
+                <th>Email</th>
                 <th>Senha</th>
                 <th>Idade</th>
             </tr>
@@ -27,6 +27,10 @@
                 <td>{{$usuario->email}}</td>
                 <td>{{$usuario->senha}}</td>
                 <td>{{($usuario->idade)}}</td>
+                <td>
+                    <a href="{{route('editusu',$usuario->id)}}">editar</a> |
+                    <a href="{{route('deleteusu',$usuario->id)}}">deletar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -34,5 +38,7 @@
     @else
     <p>Usuários não encontrados! </p>
     @endif
+    <br>
+    <a href="/usuario"><button>Criar Usuários</button></a>
 </body>
 </html>

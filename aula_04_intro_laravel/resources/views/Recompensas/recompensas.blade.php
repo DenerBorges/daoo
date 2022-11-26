@@ -25,6 +25,10 @@
                 <td>{{$recompensa->titulo}}</td>
                 <td>{{$recompensa->descricao}}</td>
                 <td>R${{$recompensa->valor}}</td>
+                <td>
+                    <a href="{{route('editrec',$recompensa->id)}}">editar</a> |
+                    <a href="{{route('deleterec',$recompensa->id)}}">deletar</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -32,5 +36,7 @@
     @else
     <p>Recompensas não encontradas! </p>
     @endif
+    <br>
+    <a href="/recompensa"><button>Criar Recompensas</button></a>
 </body>
 </html>
