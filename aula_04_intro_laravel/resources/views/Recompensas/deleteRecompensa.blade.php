@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deletar Recompensa</title>
 </head>
+
 <body>
     @if ($recompensa)
         <h1>{{$recompensa->titulo}}</h1>
@@ -28,7 +29,8 @@
         </form>
     @else
         <p>Recompensa não encontrada! </p>
-        <a href="/recompensas">&#9664;Voltar</a>
     @endif
+    <br><br><br>
+    <a href="/recompensas">&#9664;Voltar</a>
 </body>
 </html>

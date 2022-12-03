@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deletar Produto</title>
 </head>
+
 <body>
     @if ($produto)
         <h1>{{ $produto->nome }}</h1>
@@ -30,7 +31,8 @@
         </form>
     @else
         <p>Produto não encontrado! </p>
-        <a href="/produtos">&#9664;Voltar</a>
     @endif
+    <br><br><br>
+    <a href="/produtos">&#9664;Voltar</a>
 </body>
 </html>

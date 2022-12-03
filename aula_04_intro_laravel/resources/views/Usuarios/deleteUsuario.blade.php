@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deletar Usuário</title>
 </head>
+
 <body>
     @if ($usuario)
         <h1>{{$usuario->nome}}</h1>
@@ -29,7 +30,8 @@
         </form>
     @else
         <p>Usuário não encontrado! </p>
-        <a href="/usuarios">&#9664;Voltar</a>
     @endif
+    <br><br><br>
+    <a href="/usuarios">&#9664;Voltar</a>
 </body>
 </html>

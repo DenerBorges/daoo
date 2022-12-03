@@ -22,7 +22,7 @@
         <tbody>
             @foreach($produtos as $produto)
             <tr>
-                <td><a href="http://127.0.0.1:8000/produtos/{{$produto->id}}">{{$produto->id}}</a></td>
+                <td><a href="/produtos/{{$produto->id}}">{{$produto->id}}</a></td>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->qtd_estoque}}</td>
                 <td>{{$produto->preco}}</td>

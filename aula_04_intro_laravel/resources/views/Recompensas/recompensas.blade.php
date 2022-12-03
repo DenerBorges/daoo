@@ -21,7 +21,7 @@
         <tbody>
             @foreach($recompensas as $recompensa)
             <tr>
-                <td><a href="http://127.0.0.1:8000/recompensas/{{$recompensa->id}}">{{$recompensa->id}}</a></td>
+                <td><a href="/recompensas/{{$recompensa->id}}">{{$recompensa->id}}</a></td>
                 <td>{{$recompensa->titulo}}</td>
                 <td>{{$recompensa->descricao}}</td>
                 <td>R${{$recompensa->valor}}</td>

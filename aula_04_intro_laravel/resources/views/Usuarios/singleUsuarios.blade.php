@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuário</title>
 </head>
+
 <body>
     @if ($single)
     <h1>{{$single->nome}}</h1>
@@ -14,9 +15,16 @@
         <li>Senha: {{$single->senha}}</li>
         <li>Idade: {{($single->idade)}}</li>
     </ul>
+    <tr>
+        <td>
+            <a href="{{route('editusu',$single->id)}}">editar</a> |
+            <a href="{{route('deleteusu',$single->id)}}">deletar</a>
+        </td>
+    </tr>
     @else
     <p>Usuário não encontrado! </p>
     @endif
-    <a href="http://127.0.0.1:8000/usuarios">Voltar para página inicial</a>
+    <br><br><br>
+    <a href="/usuarios">&#9664;Voltar</a>
 </body>
 </html>

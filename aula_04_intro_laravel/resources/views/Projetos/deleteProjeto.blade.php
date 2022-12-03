@@ -28,7 +28,8 @@
         </form>
     @else
         <p>Projeto não encontrado! </p>
-        <a href="/projetos">&#9664;Voltar</a>
     @endif
+    <br><br><br>
+    <a href="/projetos">&#9664;Voltar</a>
 </body>
 </html>

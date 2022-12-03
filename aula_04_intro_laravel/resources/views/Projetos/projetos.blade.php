@@ -21,7 +21,7 @@
         <tbody>
             @foreach($projetos as $projeto)
             <tr>
-                <td><a href="http://127.0.0.1:8000/projetos/{{$projeto->id}}">{{$projeto->id}}</a></td>
+                <td><a href="/projetos/{{$projeto->id}}">{{$projeto->id}}</a></td>
                 <td>{{$projeto->nome}}</td>
                 <td>R${{$projeto->meta_de_valor}}</td>
                 <td>{{$projeto->dias_para_atingir}}</td>

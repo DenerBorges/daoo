@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recompensa</title>
 </head>
+
 <body>
     @if ($single)
     <h1>{{$single->titulo}}</h1>
@@ -13,9 +14,16 @@
     <ul>
         <li>Valor: R${{$single->valor}}</li>
     </ul>
+    <tr>
+        <td>
+            <a href="{{route('editrec',$single->id)}}">editar</a> |
+            <a href="{{route('deleterec',$single->id)}}">deletar</a>
+        </td>
+    </tr>
     @else
     <p>Recompensa não encontrada! </p>
     @endif
-    <a href="http://127.0.0.1:8000/recompensas">Voltar para página inicial</a>
+    <br><br><br>
+    <a href="/recompensas">&#9664;Voltar</a>
 </body>
 </html>

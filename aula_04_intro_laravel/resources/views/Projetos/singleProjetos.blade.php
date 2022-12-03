@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto</title>
 </head>
+
 <body>
     @if ($single)
     <h1>{{$single->nome}}</h1>
@@ -13,9 +14,16 @@
         <li>Meta: R${{$single->meta_de_valor}}</li>
         <li>Dias Restantes: {{$single->dias_para_atingir}}</li>
     </ul>
+    <tr>
+        <td>
+            <a href="{{route('editproj',$single->id)}}">editar</a> |
+            <a href="{{route('deleteproj',$single->id)}}">deletar</a>
+        </td>
+    </tr>
     @else
     <p>Projeto não encontrado! </p>
     @endif
-    <a href="http://127.0.0.1:8000/projetos">Voltar para página inicial</a>
+    <br><br><br>
+    <a href="/projetos">&#9664;Voltar</a>
 </body>
 </html>

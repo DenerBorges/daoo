@@ -22,7 +22,7 @@
         <tbody>
             @foreach($usuarios as $usuario)
             <tr>
-                <td><a href="http://127.0.0.1:8000/usuarios/{{$usuario->id}}">{{$usuario->id}}</a></td>
+                <td><a href="/usuarios/{{$usuario->id}}">{{$usuario->id}}</a></td>
                 <td>{{$usuario->nome}}</td>
                 <td>{{$usuario->email}}</td>
                 <td>{{$usuario->senha}}</td>
