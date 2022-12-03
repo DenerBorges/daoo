@@ -10,16 +10,16 @@ class UsuariosController extends Controller
     public function index() {
         $usuarios = (new Usuarios())->all();
         //return response()->json($usuarios);
-        return view('Usuarios.usuarios', ['usuarios'=>$usuarios]);
+        return view('Pages.Usuarios.index', ['usuarios'=>$usuarios]);
     }
 
     public function show($id) {
-        return view('Usuarios.singleUsuarios',
-        ['single'=>Usuarios::find($id)]);
+        return view('Pages.Usuarios.single',
+        ['usuario'=>Usuarios::find($id)]);
     }
 
     public function create() {
-        return view('Usuarios.createUsuario');
+        return view('Pages.Usuarios.create');
     }
 
     public function store(Request $request) {
@@ -30,7 +30,7 @@ class UsuariosController extends Controller
     }
 
     public function edit($id) {
-        return view('Usuarios.editUsuario', ['usuario' => Usuarios::find($id)]);
+        return view('Pages.Usuarios.edit', ['usuario' => Usuarios::find($id)]);
     }
 
     public function update(Request $request, $id) {
@@ -42,7 +42,7 @@ class UsuariosController extends Controller
     }
 
     public function delete($id) {
-        return view('Usuarios.deleteUsuario', ['usuario' => Usuarios::find($id)]);
+        return view('Pages.Usuarios.delete', ['usuario' => Usuarios::find($id)]);
     }
 
     public function remove(Request $request, $id) {

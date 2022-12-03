@@ -9,17 +9,16 @@ class ProdutoController extends Controller
 {
     public function index() {
         $produtos = (new Produto())->all();
-        //return response()->json($produtos);
-        return view('Produtos.produtos', ['produtos'=>$produtos]);
+        return view('Pages.Produtos.index', ['produtos'=>$produtos]);
     }
 
     public function show($id) {
-        return view('Produtos.singleProduto',
-        ['single'=>Produto::find($id)]);
+        return view('Pages.Produtos.single',
+        ['produto'=>Produto::find($id)]);
     }
 
     public function create() {
-        return view('Produtos.createProduto');
+        return view('Pages.Produtos.create');
     }
 
     public function store(Request $request) {
@@ -31,7 +30,7 @@ class ProdutoController extends Controller
     }
 
     public function edit($id) {
-        return view('Produtos.editProduto', ['produto' => Produto::find($id)]);
+        return view('Pages.Produtos.edit', ['produto' => Produto::find($id)]);
     }
 
     public function update(Request $request, $id) {
@@ -44,7 +43,7 @@ class ProdutoController extends Controller
     }
 
     public function delete($id) {
-        return view('Produtos.deleteProduto', ['produto' => Produto::find($id)]);
+        return view('Pages.Produtos.delete', ['produto' => Produto::find($id)]);
     }
 
     public function remove(Request $request, $id) {

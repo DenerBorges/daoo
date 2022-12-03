@@ -9,17 +9,16 @@ class ProjetosController extends Controller
 {
     public function index() {
         $projetos = (new Projetos())->all();
-        //return response()->json($projetos);
-        return view('Projetos.projetos', ['projetos'=>$projetos]);
+        return view('Pages.Projetos.index', ['projetos'=>$projetos]);
     }
 
     public function show($id) {
-        return view('Projetos.singleProjetos',
-        ['single'=>Projetos::find($id)]);
+        return view('Pages.Projetos.single',
+        ['projeto'=>Projetos::find($id)]);
     }
 
     public function create() {
-        return view('Projetos.createProjeto');
+        return view('Pages.Projetos.create');
     }
 
     public function store(Request $request) {
@@ -30,7 +29,7 @@ class ProjetosController extends Controller
     }
 
     public function edit($id) {
-        return view('Projetos.editProjeto', ['projeto' => Projetos::find($id)]);
+        return view('Pages.Projetos.edit', ['projeto' => Projetos::find($id)]);
     }
 
     public function update(Request $request, $id) {
@@ -42,7 +41,7 @@ class ProjetosController extends Controller
     }
 
     public function delete($id) {
-        return view('Projetos.deleteProjeto', ['projeto' => Projetos::find($id)]);
+        return view('Pages.Projetos.delete', ['projeto' => Projetos::find($id)]);
     }
 
     public function remove(Request $request, $id) {

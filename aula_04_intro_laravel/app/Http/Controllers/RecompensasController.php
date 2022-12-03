@@ -10,16 +10,16 @@ class RecompensasController extends Controller
     public function index() {
         $recompensas = (new Recompensas())->all();
         //return response()->json($recompensas);
-        return view('Recompensas.recompensas', ['recompensas'=>$recompensas]);
+        return view('Pages.Recompensas.index', ['recompensas'=>$recompensas]);
     }
 
     public function show($id) {
-        return view('Recompensas.singleRecompensas',
-        ['single'=>Recompensas::find($id)]);
+        return view('Pages.Recompensas.single',
+        ['recompensa'=>Recompensas::find($id)]);
     }
 
     public function create() {
-        return view('Recompensas.createRecompensa');
+        return view('Pages.Recompensas.create');
     }
 
     public function store(Request $request) {
@@ -30,7 +30,7 @@ class RecompensasController extends Controller
     }
 
     public function edit($id) {
-        return view('Recompensas.editRecompensa', ['recompensa' => Recompensas::find($id)]);
+        return view('Pages.Recompensas.edit', ['recompensa' => Recompensas::find($id)]);
     }
 
     public function update(Request $request, $id) {
@@ -42,7 +42,7 @@ class RecompensasController extends Controller
     }
 
     public function delete($id) {
-        return view('Recompensas.deleteRecompensa', ['recompensa' => Recompensas::find($id)]);
+        return view('Pages.Recompensas.delete', ['recompensa' => Recompensas::find($id)]);
     }
 
     public function remove(Request $request, $id) {
