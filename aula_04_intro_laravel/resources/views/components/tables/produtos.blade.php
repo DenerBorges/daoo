@@ -1,4 +1,5 @@
 <table {{$attributes->merge(['class'=>'table table-'.$type])}}>
+    @vite('resources/css/table.com')
     <thead>
         <tr>
             <th>ID</th>
@@ -6,7 +7,9 @@
             <th>Quantidade de Estoque</th>
             <th>Preço</th>
             <th>Importado</th>
-            <th>Ações</th>
+            @if (Auth::user() && Route::is('dashboard'))
+               <th>Ações</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -20,10 +23,12 @@
                 <td align="center">
                     <input type="checkbox" disabled {{ $produto->importado ? 'checked' : '' }}>
                 </td>
-                <td>
-                    <a href="{{ route('editprod', $produto->id) }}">editar</a> |
-                    <a href="{{ route('deleteprod', $produto->id) }}">deletar</a>
-                </td>
+                @if (Auth::user() && Route::is('dashboard'))
+                    <td>
+                        <a href="{{ route('editprod', $produto->id) }}">editar</a> |
+                        <a href="{{ route('deleteprod', $produto->id) }}">deletar</a>
+                    </td>
+                @endif
             </tr>
         @endforeach
     </tbody>

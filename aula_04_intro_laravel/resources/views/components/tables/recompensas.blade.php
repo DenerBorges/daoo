@@ -1,11 +1,14 @@
 <table {{$attributes->merge(['class'=>'table table-'.$type])}}>
+    @vite('resources/css/table.com')
     <thead>
         <tr>
             <th>ID</th>
             <th>Título</th>
             <th>Descrição</th>
             <th>Valor</th>
-            <th>Ações</th>
+            @if (Auth::user() && Route::is('dashboard'))
+                <th>Ações</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -15,10 +18,12 @@
             <td>{{$recompensa->titulo}}</td>
             <td>{{$recompensa->descricao}}</td>
             <td>R${{$recompensa->valor}}</td>
-            <td>
-                <a href="{{route('editrec',$recompensa->id)}}">editar</a> |
-                <a href="{{route('deleterec',$recompensa->id)}}">deletar</a>
-            </td>
+            @if (Auth::user() && Route::is('dashboard'))
+                <td>
+                    <a href="{{route('editrec',$recompensa->id)}}">editar</a> |
+                    <a href="{{route('deleterec',$recompensa->id)}}">deletar</a>
+                </td>
+            @endif
         </tr>
         @endforeach
     </tbody>

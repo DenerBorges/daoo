@@ -2,7 +2,7 @@
     @vite('resources/css/show.css')
     @if ($usuario)
     <div>
-        <h1>{{$usuario->nome}}</h1>
+        <h1 class='text-4xl font-bold'>{{$usuario->nome}}</h1>
         <table>
             </thead>
             <tbody>

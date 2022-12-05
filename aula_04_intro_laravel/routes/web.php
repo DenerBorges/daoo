@@ -1,9 +1,12 @@
 <?php
-use App\Http\Controllers\Homecontroller;
+
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetosController;
 use App\Http\Controllers\RecompensasController;
 use App\Http\Controllers\UsuariosController;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,77 +25,112 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ola',
-    [Homecontroller::class, 'index']);
+// Rotas Dashboard
+Route::get('/dashboard', function () {
+
+Route::get('/dashboard/produtos', [DashboardController::class, 'produto']);
+Route::get('/dashboard/projetos', [DashboardController::class, 'projeto']);
+Route::get('/dashboard/recompensas', [DashboardController::class, 'recompensa']);
+Route::get('/dashboard/usuarios', [DashboardController::class, 'usuario']);
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Rotas Auth
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 // Rotas Produtos
-Route::get('/produtos',
-    [ProdutoController::class, 'index']);
-Route::get('/produtos/{id}',
-    [ProdutoController::class, 'show']);
-Route::get('/produto',
-    [ProdutoController::class, 'create']);
-Route::post('/produto',
-    [ProdutoController::class, 'store']);
-Route::get('/produto/edit/{id}',
-    [ProdutoController::class, 'edit'])->name('editprod');
-Route::post('/produto/update/{id}',
-    [ProdutoController::class, 'update'])->name('updateprod');
-Route::get('/produto/delete/{id}',
-    [ProdutoController::class, 'delete'])->name('deleteprod');
-Route::post('/produto/remove/{id}',
-    [ProdutoController::class, 'remove'])->name('removeprod');
+Route::controller(ProdutoController::class)
+    ->group(function () {
+
+        Route::prefix('/produtos')->group(function () {
+            Route::get('/', 'index')->name('produtos');
+            Route::get('/{id}', 'show');
+        });
+
+        Route::prefix('/produto')
+            ->middleware('auth')
+            ->group(function () {
+                Route::get('/', 'create');
+                Route::post('/', 'store');
+
+                Route::get('/edit/{id}', 'edit')->name('editprod');
+                Route::post('/update/{id}', 'update')->name('updateprod');
+
+                Route::get('/delete/{id}', 'delete')->name('deleteprod');
+                Route::post('/remove/{id}', 'remove')->name('removeprod');
+            });
+    });
 
 // Rotas Projetos
-Route::get('/projetos',
-    [ProjetosController::class, 'index']);
-Route::get('/projetos/{id}',
-    [ProjetosController::class, 'show']);
-Route::get('/projeto',
-    [ProjetosController::class, 'create']);
-Route::post('/projeto',
-    [ProjetosController::class, 'store']);
-Route::get('/projeto/edit/{id}',
-    [ProjetosController::class, 'edit'])->name('editproj');
-Route::post('/projeto/update/{id}',
-    [ProjetosController::class, 'update'])->name('updateproj');
-Route::get('/projeto/delete/{id}',
-    [ProjetosController::class, 'delete'])->name('deleteproj');
-Route::post('/projeto/remove/{id}',
-    [ProjetosController::class, 'remove'])->name('removeproj');
+Route::controller(ProjetosController::class)
+    ->group(function () {
+
+        Route::prefix('/projetos')->group(function () {
+            Route::get('/', 'index')->name('projetos');
+            Route::get('/{id}', 'show');
+        });
+
+        Route::prefix('/projeto')
+            ->middleware('auth')
+            ->group(function () {
+                Route::get('/', 'create');
+                Route::post('/', 'store');
+
+                Route::get('/edit/{id}', 'edit')->name('editproj');
+                Route::post('/update/{id}', 'update')->name('updateproj');
+
+                Route::get('/delete/{id}','delete')->name('deleteproj');
+                Route::post('/remove/{id}', 'remove')->name('removeproj');
+            });
+    });
 
 // Rotas Recompensas
-Route::get('/recompensas',
-    [RecompensasController::class, 'index']);
-Route::get('/recompensas/{id}',
-    [RecompensasController::class, 'show']);
-Route::get('/recompensa',
-    [RecompensasController::class, 'create']);
-Route::post('/recompensa',
-    [RecompensasController::class, 'store']);
-Route::get('/recompensa/edit/{id}',
-    [RecompensasController::class, 'edit'])->name('editrec');
-Route::post('/recompensa/update/{id}',
-    [RecompensasController::class, 'update'])->name('updaterec');
-Route::get('/recompensa/delete/{id}',
-    [RecompensasController::class, 'delete'])->name('deleterec');
-Route::post('/recompensa/remove/{id}',
-    [RecompensasController::class, 'remove'])->name('removerec');
+Route::controller(RecompensasController::class)
+    ->group(function () {
+
+        Route::prefix('/recompensas')->group(function () {
+            Route::get('/', 'index')->name('recompensas');
+            Route::get('/{id}', 'show');
+        });
+
+        Route::prefix('/recompensa')
+            ->middleware('auth')
+            ->group(function () {
+                Route::get('/', 'create');
+                Route::post('/', 'store');
+
+                Route::get('/edit/{id}', 'edit')->name('editrec');
+                Route::post('/update/{id}', 'update')->name('updaterec');
+
+                Route::get('/delete/{id}', 'delete')->name('deleterec');
+                Route::post('/remove/{id}', 'remove')->name('removerec');
+            });
+    });
 
 // Rotas Usuários
-Route::get('/usuarios',
-    [UsuariosController::class, 'index']);
-Route::get('/usuarios/{id}',
-    [UsuariosController::class, 'show']);
-Route::get('/usuario',
-    [UsuariosController::class, 'create']);
-Route::post('/usuario',
-    [UsuariosController::class, 'store']);
-Route::get('/usuario/edit/{id}',
-    [UsuariosController::class, 'edit'])->name('editusu');
-Route::post('/usuario/update/{id}',
-    [UsuariosController::class, 'update'])->name('updateusu');
-Route::get('/usuario/delete/{id}',
-    [UsuariosController::class, 'delete'])->name('deleteusu');
-Route::post('/usuario/remove/{id}',
-    [UsuariosController::class, 'remove'])->name('removeusu');
+Route::controller(UsuariosController::class)
+    ->group(function () {
+
+        Route::prefix('/usuarios')->group(function () {
+            Route::get('/', 'index')->name('usuarios');
+            Route::get('/{id}', 'show');
+        });
+
+        Route::prefix('/usuario')
+            ->middleware('auth')
+            ->group(function () {
+                Route::get('/', 'create');
+                Route::post('/', 'store');
+
+                Route::get('/edit/{id}', 'edit')->name('editusu');
+                Route::post('/update/{id}', 'update')->name('updateusu');
+
+                Route::get('/delete/{id}', 'delete')->name('deleteusu');
+                Route::post('/remove/{id}','remove')->name('removeusu');
+            });
+    });

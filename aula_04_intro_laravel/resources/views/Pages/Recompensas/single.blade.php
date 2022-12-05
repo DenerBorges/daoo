@@ -2,7 +2,7 @@
     @vite('resources/css/show.css')
     @if ($recompensa)
     <div>
-        <h1>{{$recompensa->titulo}}</h1>
+        <h1 class='text-4xl font-bold'>{{$recompensa->titulo}}</h1>
         <p>{{$recompensa->descricao}}</p>
         <table>
             </thead>
