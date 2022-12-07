@@ -6,7 +6,7 @@
             <th>Título</th>
             <th>Descrição</th>
             <th>Valor</th>
-            @if (Auth::user() && Route::is('dashboard'))
+            @if (Auth::user() && Route::is('recompensas'))
                 <th>Ações</th>
             @endif
         </tr>
@@ -18,7 +18,7 @@
             <td>{{$recompensa->titulo}}</td>
             <td>{{$recompensa->descricao}}</td>
             <td>R${{$recompensa->valor}}</td>
-            @if (Auth::user() && Route::is('dashboard'))
+            @if (Auth::user() && Route::is('recompensas'))
                 <td>
                     <a href="{{route('editrec',$recompensa->id)}}">editar</a> |
                     <a href="{{route('deleterec',$recompensa->id)}}">deletar</a>

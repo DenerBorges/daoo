@@ -7,7 +7,7 @@
             <th>Email</th>
             <th>Senha</th>
             <th>Idade</th>
-            @if (Auth::user() && Route::is('dashboard'))
+            @if (Auth::user() && Route::is('usuarios'))
                 <th>Ações</th>
             @endif
         </tr>
@@ -20,7 +20,7 @@
             <td>{{$usuario->email}}</td>
             <td>{{$usuario->senha}}</td>
             <td>{{($usuario->idade)}}</td>
-            @if (Auth::user() && Route::is('dashboard'))
+            @if (Auth::user() && Route::is('usuarios'))
                 <td>
                     <a href="{{route('editusu',$usuario->id)}}">editar</a> |
                     <a href="{{route('deleteusu',$usuario->id)}}">deletar</a>

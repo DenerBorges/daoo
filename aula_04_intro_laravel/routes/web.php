@@ -28,7 +28,7 @@ Route::get('/', function () {
 // Rotas Dashboard
 Route::get('/dashboard', function () {
 
-Route::get('/dashboard/produtos', [DashboardController::class, 'produto']);
+Route::get('/dashboard', [DashboardController::class, 'produto'])->name('dashboard');
 Route::get('/dashboard/projetos', [DashboardController::class, 'projeto']);
 Route::get('/dashboard/recompensas', [DashboardController::class, 'recompensa']);
 Route::get('/dashboard/usuarios', [DashboardController::class, 'usuario']);
