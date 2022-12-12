@@ -38,7 +38,7 @@ class RecompensasController extends Controller
         // dd($updatedRecompensa);
         if (!Recompensas::find($id)->update($updatedRecompensa))
             dd("Erro ao atualizar recompensa $id!");
-        return redirect('/recompensas');
+        return redirect('/dashRecompensas');
     }
 
     public function delete($id) {

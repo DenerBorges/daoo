@@ -7,26 +7,31 @@
             <th>Email</th>
             <th>Senha</th>
             <th>Idade</th>
-            @if (Auth::user() && Route::is('usuarios'))
+            @if (Auth::user() && Route::is('dashUsuarios'))
                 <th>Ações</th>
             @endif
         </tr>
     </thead>
     <tbody>
         @foreach($usuarios as $usuario)
-        <tr>
-            <td><a href="/usuarios/{{$usuario->id}}">{{$usuario->id}}</a></td>
-            <td>{{$usuario->nome}}</td>
-            <td>{{$usuario->email}}</td>
-            <td>{{$usuario->senha}}</td>
-            <td>{{($usuario->idade)}}</td>
-            @if (Auth::user() && Route::is('usuarios'))
-                <td>
-                    <a href="{{route('editusu',$usuario->id)}}">editar</a> |
-                    <a href="{{route('deleteusu',$usuario->id)}}">deletar</a>
-                </td>
-            @endif
-        </tr>
+            <tr>
+                @if (Auth::user() && Route::is('dashUsuarios'))
+                    <td><a href="{{route('usuario.single-dash',$usuario->id) }}">{{ $usuario->id }}</a></td>
+                    <td><a href="{{route('usuario.single-dash',$usuario->id) }}">{{ $usuario->nome }}</a></td>
+                @else
+                    <td><a href="/usuarios/{{ $usuario->id }}">{{ $usuario->id }}</a></td>
+                    <td><a href="/usuarios/{{ $usuario->id }}">{{ $usuario->nome }}</a></td>
+                @endif
+                <td>{{$usuario->email}}</td>
+                <td>{{$usuario->senha}}</td>
+                <td>{{($usuario->idade)}}</td>
+                @if (Auth::user() && Route::is('dashUsuarios'))
+                    <td>
+                        <a href="{{route('editusu',$usuario->id)}}">editar</a> |
+                        <a href="{{route('deleteusu',$usuario->id)}}">deletar</a>
+                    </td>
+                @endif
+            </tr>
         @endforeach
     </tbody>
 </table>

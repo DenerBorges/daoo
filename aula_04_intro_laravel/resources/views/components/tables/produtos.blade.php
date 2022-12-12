@@ -7,23 +7,28 @@
             <th>Quantidade de Estoque</th>
             <th>Preço</th>
             <th>Importado</th>
-            @if (Auth::user() && Route::is('dashboard'))
-               <th>Ações</th>
+            @if (Auth::user() && Route::is('dashProdutos'))
+                <th>Ações</th>
             @endif
         </tr>
     </thead>
     <tbody>
         @foreach ($produtos as $produto)
             <tr>
-                <td><a href="/produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
-                <td>{{ $produto->nome }}</td>
+                @if (Auth::user() && Route::is('dashProdutos'))
+                    <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->id }}</a></td>
+                    <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->nome }}</a></td>
+                @else
+                    <td><a href="/produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
+                    <td><a href="/produtos/{{ $produto->id }}">{{ $produto->nome }}</a></td>
+                @endif
                 <td>{{ $produto->qtd_estoque }}</td>
                 <td>{{ $produto->preco }}</td>
                 {{-- <td>{{($produto->importado)?'Sim':'Não'}}</td> --}}
                 <td align="center">
                     <input type="checkbox" disabled {{ $produto->importado ? 'checked' : '' }}>
                 </td>
-                @if (Auth::user() && Route::is('dashboard'))
+                @if (Auth::user() && Route::is('dashProdutos'))
                     <td>
                         <a href="{{ route('editprod', $produto->id) }}">editar</a> |
                         <a href="{{ route('deleteprod', $produto->id) }}">deletar</a>

@@ -26,13 +26,14 @@ Route::get('/', function () {
 });
 
 // Rotas Dashboard
-Route::get('/dashboard', function () {
-
-Route::get('/dashboard', [DashboardController::class, 'produto'])->name('dashboard');
-Route::get('/dashboard/projetos', [DashboardController::class, 'projeto']);
-Route::get('/dashboard/recompensas', [DashboardController::class, 'recompensa']);
-Route::get('/dashboard/usuarios', [DashboardController::class, 'usuario']);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(DashboardController::class)->group(function () {
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/dashProdutos', [DashboardController::class, 'produto'])->name('dashProdutos');
+        Route::get('/dashProjetos', [DashboardController::class, 'projeto'])->name('dashProjetos');
+        Route::get('/dashRecompensas', [DashboardController::class, 'recompensa'])->name('dashRecompensas');
+        Route::get('/dashUsuarios', [DashboardController::class, 'usuario'])->name('dashUsuarios');
+    })->middleware(['auth', 'verified']);
+});
 
 // Rotas Auth
 Route::middleware('auth')->group(function () {

@@ -39,7 +39,7 @@ class ProdutoController extends Controller
         // dd($updatedProduto);
         if (!Produto::find($id)->update($updatedProduto))
             dd("Erro ao atualizar produto $id!");
-        return redirect('/produtos');
+        return redirect('/dashProdutos');
     }
 
     public function delete($id) {
