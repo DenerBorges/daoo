@@ -6,25 +6,30 @@
             <th>Nome</th>
             <th>Meta de Valor</th>
             <th>Dias Restantes</th>
-            @if (Auth::user() && Route::is('dashboard'))
+            @if (Auth::user() && Route::is('dashProjetos'))
                 <th>Ações</th>
             @endif
         </tr>
     </thead>
     <tbody>
         @foreach($projetos as $projeto)
-        <tr>
-            <td><a href="/projetos/{{$projeto->id}}">{{$projeto->id}}</a></td>
-            <td>{{$projeto->nome}}</td>
-            <td>R${{$projeto->meta_de_valor}}</td>
-            <td>{{$projeto->dias_para_atingir}}</td>
-            @if (Auth::user() && Route::is('dashboard'))
-                <td>
-                    <a href="{{route('editproj',$projeto->id)}}">editar</a> |
-                    <a href="{{route('deleteproj',$projeto->id)}}">deletar</a>
-                </td>
-            @endif
-        </tr>
+            <tr>
+                @if (Auth::user() && Route::is('dashProjetos'))
+                    <td><a href="{{route('projeto.single-dash',$projeto->id) }}">{{ $projeto->id }}</a></td>
+                    <td><a href="{{route('projeto.single-dash',$projeto->id) }}">{{ $projeto->nome }}</a></td>
+                @else
+                    <td><a href="/projetos/{{ $projeto->id }}">{{ $projeto->id }}</a></td>
+                    <td><a href="/projetos/{{ $projeto->id }}">{{ $projeto->nome }}</a></td>
+                @endif
+                <td>R${{$projeto->meta_de_valor}}</td>
+                <td>{{$projeto->dias_para_atingir}}</td>
+                @if (Auth::user() && Route::is('dashProjetos'))
+                    <td>
+                        <a href="{{route('editproj',$projeto->id)}}">editar</a> |
+                        <a href="{{route('deleteproj',$projeto->id)}}">deletar</a>
+                    </td>
+                @endif
+            </tr>
         @endforeach
     </tbody>
 </table>

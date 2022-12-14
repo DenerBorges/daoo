@@ -37,7 +37,7 @@ class ProjetosController extends Controller
         // dd($updatedProjeto);
         if (!Projetos::find($id)->update($updatedProjeto))
             dd("Erro ao atualizar projeto $id!");
-        return redirect('/projetos');
+        return redirect('/dashProjetos');
     }
 
     public function delete($id) {

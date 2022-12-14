@@ -38,7 +38,7 @@ class UsuariosController extends Controller
         // dd($updatedUsuario);
         if (!Usuarios::find($id)->update($updatedUsuario))
             dd("Erro ao atualizar usuário $id!");
-        return redirect('/usuarios');
+        return redirect('/dashUsuarios');
     }
 
     public function delete($id) {

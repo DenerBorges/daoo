@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     <h1>Atualize o Usuário</h1>
     <form id="edit" action="{{route('updateusu',$usuario->id)}}" method="POST">
         @csrf
@@ -22,5 +22,5 @@
         </table>
     </form>
     <input form=edit type="submit" name='confirmar' value="Salvar"/>
-    <a href="/usuarios"><button>Cancelar</button></a>
-</x-main-layout>
+    <a href="/dashUsuarios"><button>Cancelar</button></a>
+</x-dash-layout>
