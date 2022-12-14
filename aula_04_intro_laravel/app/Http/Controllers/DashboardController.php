@@ -14,14 +14,14 @@ class DashboardController extends Controller
     }
 
     public function projeto() {
-        return view('dashboard', ['projetos'=>Projetos::all()]);
+        return view('projetos', ['projetos'=>Projetos::all()]);
     }
 
     public function recompensa() {
-        return view('dashboard', ['recompensas'=>Recompensas::all()]);
+        return view('recompensas', ['recompensas'=>Recompensas::all()]);
     }
 
     public function usuario() {
-        return view('dashboard', ['usuarios'=>Usuarios::all()]);
+        return view('usuarios', ['usuarios'=>Usuarios::all()]);
     }
 }
