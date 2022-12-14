@@ -40,6 +40,10 @@ Route::controller(DashboardController::class)
 
 });
 
+Route::get('/dashboard/produto/{id}', function ($id) {
+    return view('pages.produto.single-dash',['produto'=>Produto::find($id) ]);
+})->middleware(['auth', 'verified'])->name('produto.single-dash');
+
 // Rotas Auth
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
