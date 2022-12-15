@@ -16,15 +16,38 @@ class DashboardController extends Controller
             'users'=>User::all()]);
     }
 
+    public function singleProduto($id) {
+        return view('Pages.Produtos.single-dash',
+            ['produto'=>Produto::find($id) ]);
+    }
+
     public function projeto() {
-        return view('projetos', ['projetos'=>Projetos::all()]);
+        return view('dashboardProjetos',
+            ['projetos'=>Projetos::all()]);
+    }
+
+    public function singleProjeto($id) {
+        return view('Pages.Projetos.single-dash',
+            ['projeto'=>Projetos::find($id) ]);
     }
 
     public function recompensa() {
-        return view('recompensas', ['recompensas'=>Recompensas::all()]);
+        return view('dashboardRecompensas',
+            ['recompensas'=>Recompensas::all()]);
+    }
+
+    public function singleRecompensa($id) {
+        return view('Pages.Recompensas.single-dash',
+            ['recompensa'=>Recompensas::find($id) ]);
     }
 
     public function usuario() {
-        return view('usuarios', ['usuarios'=>Usuarios::all()]);
+        return view('dashboardUsuarios',
+            ['usuarios'=>Usuarios::all()]);
+    }
+
+    public function singleUsuario($id) {
+        return view('Pages.Usuarios.single-dash',
+            ['usuario'=>Usuarios::find($id) ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetosController;
 use App\Http\Controllers\RecompensasController;
 use App\Http\Controllers\UsuariosController;
+use App\Models\Produto;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 // Rotas Welcome
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing', ['produtos'=>Produto::all()]);
+})->name('landing');
 
 // Rotas Dashboard
 Route::controller(DashboardController::class)
@@ -32,17 +33,21 @@ Route::controller(DashboardController::class)
     Route::prefix('/dashboard')
         ->middleware(['auth', 'verified'])
         ->group(function () {
+
         Route::get('/', 'produto')->name('dashProdutos');
+        Route::get('/produto/{id}', 'singleProduto')->name('singleDash');
+
         Route::get('/dashProjetos', 'projeto')->name('dashProjetos');
+        Route::get('/projeto/{id}', 'singleProjeto')->name('singleDashProj');
+
         Route::get('/dashRecompensas', 'recompensa')->name('dashRecompensas');
+        Route::get('/recompensa/{id}', 'singleRecompensa')->name('singleDashRec');
+
         Route::get('/dashUsuarios', 'usuario')->name('dashUsuarios');
+        Route::get('/usuario/{id}', 'singleUsuario')->name('singleDashUsu');
     });
 
 });
-
-Route::get('/dashboard/produto/{id}', function ($id) {
-    return view('pages.produto.single-dash',['produto'=>Produto::find($id) ]);
-})->middleware(['auth', 'verified'])->name('produto.single-dash');
 
 // Rotas Auth
 Route::middleware('auth')->group(function () {
@@ -59,7 +64,7 @@ Route::controller(ProdutoController::class)
 
         Route::prefix('/produtos')->group(function () {
             Route::get('/', 'index')->name('produtos');
-            Route::get('/{id}', 'show');
+            Route::get('/{id}', 'show')->name('single');
         });
 
         Route::prefix('/produto')

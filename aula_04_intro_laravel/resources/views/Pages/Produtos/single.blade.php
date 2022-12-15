@@ -1,7 +1,7 @@
 <x-main-layout>
+<div class="text-center mt-8">
     @vite('resources/css/show.css')
     @if ($produto)
-    <div>
         <h1 class='text-4xl font-bold'>{{$produto->nome}}</h1>
         <p>{{$produto->descricao}}</p>
         <table>
@@ -29,11 +29,11 @@
         </table>
         <a href="{{route('editprod', $produto->id)}}"><button>Editar</button></a> |
         <a href="{{route('deleteprod', $produto->id)}}"><button>Deletar</button></a>
-        @else
-            <p>Produto não encontrado! </p>
-        @endif
+    @else
+        <p>Produto não encontrado! </p>
+    @endif
         <div>
-            <a href="/produtos">&#9664;Voltar</a>
+            <a href="/">&#9664;Voltar</a>
         </div>
-    </div>
+</div>
 </x-main-layout>

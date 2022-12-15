@@ -26,7 +26,7 @@ class UsuariosController extends Controller
         $newUsuario = $request->all();
         if (!Usuarios::create($newUsuario))
             dd("Erro ao inserir novo usuário!");
-        return redirect('/usuarios');
+        return redirect('/dashboard/dashUsuarios');
     }
 
     public function edit($id) {
@@ -38,7 +38,7 @@ class UsuariosController extends Controller
         // dd($updatedUsuario);
         if (!Usuarios::find($id)->update($updatedUsuario))
             dd("Erro ao atualizar usuário $id!");
-        return redirect('/dashUsuarios');
+        return redirect('/dashboard/dashUsuarios');
     }
 
     public function delete($id) {
@@ -49,6 +49,6 @@ class UsuariosController extends Controller
         if ($request->confirmar == 'Deletar')
             if (!Usuarios::destroy($id))
                 dd("Erro ao deletar usuário $id.");
-        return redirect('/usuarios');
+        return redirect('/dashboard/dashUsuarios');
     }
 }

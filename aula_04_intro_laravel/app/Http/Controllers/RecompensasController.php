@@ -26,7 +26,7 @@ class RecompensasController extends Controller
         $newRecompensa = $request->all();
         if (!Recompensas::create($newRecompensa))
             dd("Erro ao inserir nova recompensa!");
-        return redirect('/recompensas');
+        return redirect('/dashboard/dashRecompensas');
     }
 
     public function edit($id) {
@@ -38,7 +38,7 @@ class RecompensasController extends Controller
         // dd($updatedRecompensa);
         if (!Recompensas::find($id)->update($updatedRecompensa))
             dd("Erro ao atualizar recompensa $id!");
-        return redirect('/dashRecompensas');
+        return redirect('/dashboard/dashRecompensas');
     }
 
     public function delete($id) {
@@ -49,6 +49,6 @@ class RecompensasController extends Controller
         if ($request->confirmar == 'Deletar')
             if (!Recompensas::destroy($id))
                 dd("Erro ao deletar recompensa $id.");
-        return redirect('/recompensas');
+        return redirect('/dashboard/dashRecompensas');
     }
 }

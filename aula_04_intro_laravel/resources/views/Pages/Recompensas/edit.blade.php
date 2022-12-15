@@ -18,5 +18,5 @@
         </table>
     </form>
     <input form=edit type="submit" name='confirmar' value="Salvar"/>
-    <a href="/dashRecompensas"><button>Cancelar</button></a>
+    <a href="/dashboard/dashRecompensas"><button>Cancelar</button></a>
 </x-dash-layout>

@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     @if ($projeto)
         <h1>{{$projeto->nome}}</h1>
         <ul>
@@ -14,4 +14,4 @@
     @else
         <p>Projeto não encontrado! </p>
     @endif
-</x-main-layout>
+</x-dash-layout>

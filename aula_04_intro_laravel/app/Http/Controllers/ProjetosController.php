@@ -25,7 +25,7 @@ class ProjetosController extends Controller
         $newProjeto = $request->all();
         if (!Projetos::create($newProjeto))
             dd("Erro ao inserir novo projeto!");
-        return redirect('/projetos');
+        return redirect('/dashboard/dashProjetos');
     }
 
     public function edit($id) {
@@ -37,7 +37,7 @@ class ProjetosController extends Controller
         // dd($updatedProjeto);
         if (!Projetos::find($id)->update($updatedProjeto))
             dd("Erro ao atualizar projeto $id!");
-        return redirect('/dashProjetos');
+        return redirect('/dashboard/dashProjetos');
     }
 
     public function delete($id) {
@@ -48,6 +48,6 @@ class ProjetosController extends Controller
         if ($request->confirmar == 'Deletar')
             if (!Projetos::destroy($id))
                 dd("Erro ao deletar projeto $id.");
-        return redirect('/projetos');
+        return redirect('/dashboard/dashProjetos');
     }
 }

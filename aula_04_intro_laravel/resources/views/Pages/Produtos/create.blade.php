@@ -27,5 +27,5 @@
         </table>
     </form>
     <input form="create" type="submit" value="Criar">
-    <a href="/produtos"><button>Cancelar</button></a>
+    <a href="/dashboard"><button>Cancelar</button></a>
 </x-main-layout>

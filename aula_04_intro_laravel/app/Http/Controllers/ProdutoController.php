@@ -26,7 +26,7 @@ class ProdutoController extends Controller
         $newProduto['importado'] = ($request->importado) ? true : false;
         if (!Produto::create($newProduto))
             dd("Erro ao inserir novo produto!");
-        return redirect('/produtos');
+        return redirect('/dashboard');
     }
 
     public function edit($id) {
@@ -39,7 +39,7 @@ class ProdutoController extends Controller
         // dd($updatedProduto);
         if (!Produto::find($id)->update($updatedProduto))
             dd("Erro ao atualizar produto $id!");
-        return redirect('/dashProdutos');
+        return redirect('/dashboard');
     }
 
     public function delete($id) {
@@ -50,6 +50,6 @@ class ProdutoController extends Controller
         if ($request->confirmar == 'Deletar')
             if (!Produto::destroy($id))
                 dd("Erro ao deletar produto $id!");
-        return redirect('/produtos');
+        return redirect('/dashboard');
     }
 }

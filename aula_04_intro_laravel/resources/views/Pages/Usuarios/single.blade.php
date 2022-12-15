@@ -1,7 +1,7 @@
 <x-main-layout>
+<div class="text-center mt-8">
     @vite('resources/css/show.css')
     @if ($usuario)
-    <div>
         <h1 class='text-4xl font-bold'>{{$usuario->nome}}</h1>
         <table>
             </thead>
@@ -22,11 +22,11 @@
         </table>
         <a href="{{route('editusu',$usuario->id)}}"><button>Editar</button></a> |
         <a href="{{route('deleteusu',$usuario->id)}}"><button>Deletar</button></a>
-        @else
-            <p>Usuário não encontrado! </p>
-        @endif
+    @else
+        <p>Usuário não encontrado! </p>
+    @endif
         <div>
-            <a href="/usuarios">&#9664;Voltar</a>
+            <a href="/">&#9664;Voltar</a>
         </div>
-    </div>
+</div>
 </x-main-layout>

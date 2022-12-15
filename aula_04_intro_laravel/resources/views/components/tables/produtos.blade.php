@@ -16,8 +16,8 @@
         @foreach ($produtos as $produto)
             <tr>
                 @if (Auth::user() && Route::is('dashProdutos'))
-                    <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->id }}</a></td>
-                    <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->nome }}</a></td>
+                    <td><a href="{{route('singleDash',$produto->id) }}">{{ $produto->id }}</a></td>
+                    <td><a href="{{route('singleDash',$produto->id) }}">{{ $produto->nome }}</a></td>
                 @else
                     <td><a href="/produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
                     <td><a href="/produtos/{{ $produto->id }}">{{ $produto->nome }}</a></td>

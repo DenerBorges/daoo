@@ -1,7 +1,7 @@
 <x-main-layout>
+<div class="text-center mt-8">
     @vite('resources/css/show.css')
     @if ($projeto)
-    <div>
         <h1 class='text-4xl font-bold'>{{$projeto->nome}}</h1>
         <table>
             </thead>
@@ -18,11 +18,11 @@
         </table>
         <a href="{{route('editproj',$projeto->id)}}"><button>Editar</button></a> |
         <a href="{{route('deleteproj',$projeto->id)}}"><button>Deletar</button></a>
-        @else
-            <p>Projeto não encontrado! </p>
-        @endif
+    @else
+        <p>Projeto não encontrado! </p>
+    @endif
         <div>
-            <a href="/projetos">&#9664;Voltar</a>
+            <a href="/">&#9664;Voltar</a>
         </div>
-    </div>
+</div>
 </x-main-layout>

@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     @if ($produto)
         <h1>{{ $produto->nome }}</h1>
         <p>{{ $produto->descricao }}</p>
@@ -16,4 +16,4 @@
     @else
         <p>Produto não encontrado! </p>
     @endif
-</x-main-layout>
+</x-dash-layout>

@@ -19,5 +19,5 @@
         </table>
     </form>
     <input form="create" type="submit" value="Criar">
-    <a href="/projetos"><button>Cancelar</button></a>
+    <a href="/dashboard/dashProjetos"><button>Cancelar</button></a>
 </x-main-layout>

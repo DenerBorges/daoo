@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     @if ($usuario)
         <h1>{{$usuario->nome}}</h1>
         <ul>
@@ -15,4 +15,4 @@
     @else
         <p>Usuário não encontrado! </p>
     @endif
-</x-main-layout>
+</x-dash-layout>

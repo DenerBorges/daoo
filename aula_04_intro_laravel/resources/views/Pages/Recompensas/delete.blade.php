@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     @if ($recompensa)
         <h1>{{$recompensa->titulo}}</h1>
         <ul>
@@ -14,4 +14,4 @@
     @else
         <p>Recompensa não encontrada! </p>
     @endif
-</x-main-layout>
+</x-dash-layout>

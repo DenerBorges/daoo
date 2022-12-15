@@ -15,8 +15,8 @@
         @foreach($recompensas as $recompensa)
             <tr>
                 @if (Auth::user() && Route::is('dashRecompensas'))
-                    <td><a href="{{route('recompensa.single-dash',$recompensa->id) }}">{{ $recompensa->id }}</a></td>
-                    <td><a href="{{route('recompensa.single-dash',$recompensa->id) }}">{{ $recompensa->titulo }}</a></td>
+                    <td><a href="{{route('singleDashRec',$recompensa->id) }}">{{ $recompensa->id }}</a></td>
+                    <td><a href="{{route('singleDashRec',$recompensa->id) }}">{{ $recompensa->titulo }}</a></td>
                 @else
                     <td><a href="/recompensas/{{ $recompensa->id }}">{{ $recompensa->id }}</a></td>
                     <td><a href="/recompensas/{{ $recompensa->id }}">{{ $recompensa->titulo }}</a></td>

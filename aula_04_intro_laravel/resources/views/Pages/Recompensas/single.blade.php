@@ -1,7 +1,7 @@
 <x-main-layout>
+<div class="text-center mt-8">
     @vite('resources/css/show.css')
     @if ($recompensa)
-    <div>
         <h1 class='text-4xl font-bold'>{{$recompensa->titulo}}</h1>
         <p>{{$recompensa->descricao}}</p>
         <table>
@@ -15,11 +15,11 @@
         </table>
         <a href="{{route('editrec',$recompensa->id)}}"><button>Editar</button></a> |
         <a href="{{route('deleterec',$recompensa->id)}}"><button>Deletar</button></a>
-        @else
-            <p>Recompensa não encontrada! </p>
-        @endif
+    @else
+        <p>Recompensa não encontrada! </p>
+    @endif
         <div>
-            <a href="/recompensas">&#9664;Voltar</a>
+            <a href="/">&#9664;Voltar</a>
         </div>
-    </div>
+</div>
 </x-main-layout>
