@@ -13,13 +13,13 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="{{route('editrec',$recompensa->id)}}"><button>Editar</button></a> |
-            <a href="{{route('deleterec',$recompensa->id)}}"><button>Deletar</button></a>
+            <a href="{{route('editrec',$recompensa->id)}}"><x-primary-button>Editar</x-primary-button></a> |
+            <a href="{{route('deleterec',$recompensa->id)}}"><x-danger-button>Deletar</x-danger-button></a>
         @else
             <p>Recompensa não encontrada! </p>
         @endif
         <div>
-            <a href="/dashboard">&#9664;Voltar</a>
+            <a href="/dashboard/dashRecompensas">&#9664;Voltar</a>
         </div>
     </div>
 </x-dash-layout>

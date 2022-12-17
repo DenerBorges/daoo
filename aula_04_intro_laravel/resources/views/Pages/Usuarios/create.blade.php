@@ -1,5 +1,5 @@
 <x-dash-layout>
-    <h1>Insira um Novo Usuário</h1>
+    <h1 class='text-center text-2xl font-bold'>Insira um Novo Usuário</h1>
     <form id="create" action="/usuario" method="POST">
         @csrf
         {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"/> --}}
@@ -22,6 +22,6 @@
             </tr>
         </table>
     </form>
-    <input form="create" type="submit" value="Criar">
-    <a href="/dashboard/dashUsuarios"><button>Cancelar</button></a>
+    <x-primary-button><input form="create" type="submit" value="Criar"></x-primary-button>
+    <a href="/dashboard/dashUsuarios"><x-secondary-button><input type="submit" value="Cancelar" /></x-secondary-button></a>
 </x-dash-layout>

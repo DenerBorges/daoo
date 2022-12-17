@@ -20,13 +20,13 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="{{route('editusu',$usuario->id)}}"><button>Editar</button></a> |
-            <a href="{{route('deleteusu',$usuario->id)}}"><button>Deletar</button></a>
+            <a href="{{route('editusu',$usuario->id)}}"><x-primary-button>Editar</x-primary-button></a> |
+            <a href="{{route('deleteusu',$usuario->id)}}"><x-danger-button>Deletar</x-danger-button></a>
         @else
             <p>Usuário não encontrado! </p>
         @endif
         <div>
-            <a href="/dashboard">&#9664;Voltar</a>
+            <a href="/dashboard/dashUsuarios">&#9664;Voltar</a>
         </div>
     </div>
 </x-dash-layout>

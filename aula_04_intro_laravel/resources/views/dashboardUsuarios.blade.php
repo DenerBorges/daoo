@@ -11,12 +11,10 @@
                 <div class="p-6 text-gray-900">
                     <h2 class='text-4xl'>Usuarios</h2>
                     @if (isset($usuarios) && $usuarios->count() > 0)
+                        <div style="display:flex; flex-direction: row; justify-content:flex-end">
+                            <a href="/usuario"><x-primary-button>Criar Novo Usuário</x-primary-button></a>
+                        </div>
                         <x-tables.usuarios :usuarios="$usuarios" class='table-odd' type='hover'/>
-                        @auth
-                            <div style="display:flex; flex-direction: row; justify-content:flex-end">
-                                <a href="/usuario"><button>Criar Novo Usuário</button></a>
-                            </div>
-                        @endauth
                     @else
                         <p>Usuários não encontrados! </p>
                     @endif

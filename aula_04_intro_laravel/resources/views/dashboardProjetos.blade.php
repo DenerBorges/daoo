@@ -11,12 +11,10 @@
                 <div class="p-6 text-gray-900">
                     <h2 class='text-4xl'>Projetos</h2>
                     @if (isset($projetos) && $projetos->count() > 0)
+                        <div style="display:flex; flex-direction: row; justify-content:flex-end">
+                            <a href="/projeto"><x-primary-button>Criar Novo Projeto</x-primary-button></a>
+                        </div>
                         <x-tables.projetos :projetos="$projetos" class='table-odd' type='hover'/>
-                        @auth
-                            <div style="display:flex; flex-direction: row; justify-content:flex-end">
-                                <a href="/projeto"><button>Criar Novo Projeto</button></a>
-                            </div>
-                        @endauth
                     @else
                         <p>Projetos não encontrados! </p>
                     @endif

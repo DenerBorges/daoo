@@ -11,12 +11,10 @@
                 <div class="p-6 text-gray-900">
                     <h2 class='text-4xl'>Recompensas</h2>
                     @if (isset($recompensas) && $recompensas->count() > 0)
-                        <x-tables.recompensas :recompensas="$recompensas" class='table-odd' type='hover'/>
-                        @auth
-                            <div style="display:flex; flex-direction: row; justify-content:flex-end">
-                                <a href="/recompensa"><button>Criar Nova Recompensa</button></a>
-                            </div>
-                        @endauth
+                    <div style="display:flex; flex-direction: row; justify-content:flex-end">
+                        <a href="/recompensa"><x-primary-button>Criar Nova Recompensa</x-primary-button></a>
+                    </div>
+                    <x-tables.recompensas :recompensas="$recompensas" class='table-odd' type='hover'/>
                     @else
                         <p>Recompensas não encontrados! </p>
                     @endif

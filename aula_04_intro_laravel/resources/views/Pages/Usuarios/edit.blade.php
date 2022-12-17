@@ -21,6 +21,6 @@
             </tr>
         </table>
     </form>
-    <input form=edit type="submit" name='confirmar' value="Salvar"/>
-    <a href="/dashboard/dashUsuarios"><button>Cancelar</button></a>
+    <x-primary-button><input form=edit type="submit" name='confirmar' value="Salvar"/></x-primary-button>
+    <a href="/dashboard/dashUsuarios"><x-secondary-button><input type="submit" value="Cancelar" /></x-secondary-button></a>
 </x-dash-layout>
