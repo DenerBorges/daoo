@@ -2,11 +2,11 @@
     @vite('resources/css/table.css')
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
+            <th><a href="#" wire:click='orderBy'>ID</a></th>
+            <th><a href="#" wire:click='orderByName'>Nome</a></th>
             <th>Email</th>
             <th>Senha</th>
-            <th>Idade</th>
+            <th><a href="#" wire:click='orderByYearsOld'>Idade</a></th>
             @if (Auth::user() && Route::is('dashUsuarios'))
                 <th>Ações</th>
             @endif

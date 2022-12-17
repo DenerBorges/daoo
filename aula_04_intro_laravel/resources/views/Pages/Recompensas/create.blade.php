@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     <h1>Insira uma Nova Recompensa</h1>
     <form id="create" action="/recompensa" method="POST">
         @csrf
@@ -20,4 +20,4 @@
     </form>
     <input form="create" type="submit" value="Criar">
     <a href="/dashboard/dashRecompensas"><button>Cancelar</button></a>
-</x-main-layout>
+</x-dash-layout>

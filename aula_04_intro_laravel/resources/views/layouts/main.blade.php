@@ -5,7 +5,7 @@
         </div>
         <div class="w-1/4 flex justify-end text-center mr-5">
             @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-white dark:text-gray-500 underline mt-4">Dashboard</a>
+                <a href="{{ url('/dashboard') }}" class="text-sm text-white dark:text-white underline mt-4">Dashboard</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 underline mt-4">Log in</a>
                 @if (Route::has('register'))

@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-dash-layout>
     <h1>Insira um Novo Produto</h1>
     <form id="create" action="/produto" method="POST">
         @csrf
@@ -28,4 +28,4 @@
     </form>
     <input form="create" type="submit" value="Criar">
     <a href="/dashboard"><button>Cancelar</button></a>
-</x-main-layout>
+</x-dash-layout>

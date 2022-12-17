@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('landing') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-14 w-12 fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -15,14 +15,26 @@
                     <x-nav-link :href="route('dashProdutos')" :active="request()->routeIs('dashProdutos')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('produtos')" :active="request()->routeIs('produtos')">
+                        {{ __('Produtos Livewire') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dashProjetos')" :active="request()->routeIs('dashProjetos')">
                         {{ __('Projetos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('projetos')" :active="request()->routeIs('projetos')">
+                        {{ __('Projetos Livewire') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashRecompensas')" :active="request()->routeIs('dashRecompensas')">
                         {{ __('Recompensas') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('recompensas')" :active="request()->routeIs('recompensas')">
+                        {{ __('Recompensas Livewire') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dashUsuarios')" :active="request()->routeIs('dashUsuarios')">
                         {{ __('Usuários') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('usuarios')" :active="request()->routeIs('usuarios')">
+                        {{ __('Usuários Livewire') }}
                     </x-nav-link>
                 </div>
             </div>

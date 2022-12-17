@@ -2,9 +2,9 @@
     @vite('resources/css/table.css')
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Meta de Valor</th>
+            <th><a href="#" wire:click='orderBy'>ID</a></th>
+            <th><a href="#" wire:click='orderByName'>Nome</a></th>
+            <th><a href="#" wire:click='orderByValue'>Meta de Valor</a></th>
             <th>Dias Restantes</th>
             @if (Auth::user() && Route::is('dashProjetos'))
                 <th>Ações</th>
