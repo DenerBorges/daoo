@@ -9,7 +9,8 @@ use Livewire\Component;
 class Users extends Component
 {
     public $usuarios;
-    public $orderAsc=true;
+    public $orderAsc = true;
+    public $orderColumn = 'id';
 
     public $nome;
     public $email;
@@ -22,9 +23,13 @@ class Users extends Component
         return view('livewire.users');
     }
 
-    public function orderBy($column='id')
+    public function orderBy($column = 'id')
     {
-        $this->usuarios = Usuarios::orderBy($column, $this->orderAsc ? 'asc' : 'desc')->get();
+        $this->orderColumn = $column;
+        $this->usuarios = Usuarios::orderBy(
+            $this->orderColumn,
+            $this->orderAsc ? 'asc' : 'desc'
+        )->get();
         $this->orderAsc = !$this->orderAsc;
     }
 
@@ -63,5 +68,29 @@ class Users extends Component
         $this->email = '';
         $this->senha = '';
         $this->idade = 0;
+    }
+
+    public function remove($id)
+    {
+        if (!Usuarios::destroy($id))
+            return "Erro!";
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+    }
+
+
+    public function update($id)
+    {
+
+        $usuarios = [
+            "nome" => $this->nome,
+            "email" => $this->email,
+            "senha" => $this->senha,
+            "idade" => $this->idade,
+        ];
+        Usuarios::findOrFail($id)->update($usuarios);
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+        $this->clear();
     }
 }

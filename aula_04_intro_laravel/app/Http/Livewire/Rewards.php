@@ -9,7 +9,8 @@ use Livewire\Component;
 class Rewards extends Component
 {
     public $recompensas;
-    public $orderAsc=true;
+    public $orderAsc = true;
+    public $orderColumn = 'id';
 
     public $titulo;
     public $descricao;
@@ -21,9 +22,13 @@ class Rewards extends Component
         return view('livewire.rewards');
     }
 
-    public function orderBy($column='id')
+    public function orderBy($column = 'id')
     {
-        $this->recompensas = Recompensas::orderBy($column, $this->orderAsc ? 'asc' : 'desc')->get();
+        $this->orderColumn = $column;
+        $this->recompensas = Recompensas::orderBy(
+            $this->orderColumn,
+            $this->orderAsc ? 'asc' : 'desc'
+        )->get();
         $this->orderAsc = !$this->orderAsc;
     }
 
@@ -60,5 +65,27 @@ class Rewards extends Component
         $this->titulo = '';
         $this->descricao = '';
         $this->valor = 0;
+    }
+
+    public function remove($id)
+    {
+        if (!Recompensas::destroy($id))
+            return "Erro!";
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+    }
+
+    public function update($id)
+    {
+
+        $recompensas = [
+            "titulo" => $this->titulo,
+            "descricao" => $this->descricao,
+            "valor" => $this->valor,
+        ];
+        Recompensas::findOrFail($id)->update($recompensas);
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+        $this->clear();
     }
 }

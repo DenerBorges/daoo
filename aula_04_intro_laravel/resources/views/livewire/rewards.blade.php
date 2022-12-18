@@ -35,8 +35,10 @@
                     </table>
                 </form>
                 {{-- <input type="submit" value="Criar" form=create /> --}}
-                <x-primary-button @click="open=false" class='w-30' form='create'>Criar</x-primary-button>
-                <x-secondary-button @click="open=false" class='w-30'>Cancelar</x-secondary-button>
+                <div class='flex justify-center gap-24 w-full'>
+                    <x-primary-button @click="open=false" class='w-30' form='create'>Criar</x-primary-button>
+                    <x-secondary-button @click="open=false" class='w-30'>Cancelar</x-secondary-button>
+                </div>
             </div>
         </div>
     </div>

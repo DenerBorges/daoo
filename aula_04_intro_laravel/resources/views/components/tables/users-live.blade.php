@@ -1,3 +1,7 @@
+<div x-data="{
+    open: false,
+    idmodal:null,
+}">
 <table {{$attributes->merge(['class'=>'table table-'.$type])}}>
     @vite('resources/css/table.css')
     <thead>
@@ -8,7 +12,7 @@
             <th>Senha</th>
             <th><a href="#" wire:click='orderByYearsOld'>Idade</a></th>
             @if (Auth::user() && Route::is('dashUsuarios'))
-                <th>Ações</th>
+                <th colspan="2">Ações</th>
             @endif
         </tr>
     </thead>
@@ -26,12 +30,38 @@
                 <td>{{$usuario->senha}}</td>
                 <td>{{($usuario->idade)}}</td>
                 @if (Auth::user() && Route::is('dashUsuarios'))
-                    <td>
-                        <a href="{{route('editusu',$usuario->id)}}">editar</a> |
-                        <a href="{{route('deleteusu',$usuario->id)}}">deletar</a>
+                    <td class='actions'>
+                        <x-primary-button class='px-2 py-1 mx-0 my-0'
+                        @click=" idmodal = 'modal-upd-{{ $usuario->id }}'">
+                            Atualizar
+                        </x-primary-button>
                     </td>
+                    <td class='actions'>
+                        <x-danger-button class='px-2 py-1 mx-0 my-0'
+                        @click=" idmodal = 'modal-rm-{{ $usuario->id }}'">
+                            Remover
+                        </x-danger-button>
                 @endif
             </tr>
         @endforeach
     </tbody>
 </table>
+@foreach ($usuarios as $usuario)
+    <x-modals.usuario-modal
+        id="{{'modal-rm-'.$usuario->id}}"
+        trigger="idmodal"
+        >
+        <x-slot name="title">{{$usuario->nome.' ('.$usuario->id.')'}}</x-slot>
+        <x-modals.forms.usuario-remove :usuario="$usuario"/>
+    </x-forms.usuario-modal>
+@endforeach
+@foreach ($usuarios as $usuario)
+    <x-modals.usuario-modal
+        id="{{'modal-upd-'.$usuario->id}}"
+        trigger="idmodal"
+        >
+        <x-slot name="title">{{$usuario->nome.' ('.$usuario->id.')'}}</x-slot>
+        <x-modals.forms.usuario-update :usuario="$usuario"/>
+    </x-forms.usuario-modal>
+@endforeach
+</div>

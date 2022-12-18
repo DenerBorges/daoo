@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Projetos;
 use Exception;
 use Livewire\Component;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class Projects extends Component
 {
     public $projetos;
-    public $orderAsc=true;
+    public $orderAsc = true;
+    public $orderColumn = 'id';
 
     public $nome;
     public $meta;
@@ -21,9 +23,13 @@ class Projects extends Component
         return view('livewire.projects');
     }
 
-    public function orderBy($column='id')
+    public function orderBy($column = 'id')
     {
-        $this->projetos = Projetos::orderBy($column, $this->orderAsc ? 'asc' : 'desc')->get();
+        $this->orderColumn = $column;
+        $this->projetos = Projetos::orderBy(
+            $this->orderColumn,
+            $this->orderAsc ? 'asc' : 'desc'
+        )->get();
         $this->orderAsc = !$this->orderAsc;
     }
 
@@ -60,5 +66,27 @@ class Projects extends Component
         $this->nome = '';
         $this->meta = 0;
         $this->dias = 0;
+    }
+
+    public function remove($id)
+    {
+        if (!Projetos::destroy($id))
+            return "Erro!";
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+    }
+
+    public function update($id)
+    {
+
+        $projetos = [
+            "nome" => $this->nome,
+            "meta_de_valor" => $this->meta,
+            "dias_para_atingir" => $this->dias,
+        ];
+        Projetos::findOrFail($id)->update($projetos);
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+        $this->clear();
     }
 }

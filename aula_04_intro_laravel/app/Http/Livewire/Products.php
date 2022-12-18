@@ -9,7 +9,8 @@ use Livewire\Component;
 class Products extends Component
 {
     public $produtos;
-    public $orderAsc=true;
+    public $orderAsc = true;
+    public $orderColumn = 'id';
 
     public $nome;
     public $descricao;
@@ -23,9 +24,13 @@ class Products extends Component
         return view('livewire.products');
     }
 
-    public function orderBy($column='id')
+    public function orderBy($column = 'id')
     {
-        $this->produtos = Produto::orderBy($column, $this->orderAsc ? 'asc' : 'desc')->get();
+        $this->orderColumn = $column;
+        $this->produtos = Produto::orderBy(
+            $this->orderColumn,
+            $this->orderAsc ? 'asc' : 'desc'
+        )->get();
         $this->orderAsc = !$this->orderAsc;
     }
 
@@ -66,5 +71,30 @@ class Products extends Component
         $this->preco = 0;
         $this->quantidade = 0;
         $this->importado = null;
+    }
+
+    public function remove($id)
+    {
+        if (!Produto::destroy($id))
+            return "Erro!";
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+    }
+
+
+    public function update($id)
+    {
+
+        $produto= [
+            'nome' => $this->nome,
+            'descricao' => $this->descricao,
+            'preco' => $this->preco,
+            'qtd_estoque' => $this->quantidade,
+            'importado' => $this->importado
+        ];
+        Produto::findOrFail($id)->update($produto);
+        $this->orderAsc = !$this->orderAsc;
+        $this->orderBy($this->orderColumn);
+        $this->clear();
     }
 }
