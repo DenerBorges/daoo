@@ -1,5 +1,4 @@
 <div x-data="{
-    open: false,
     idmodal:null,
 }">
 <table {{$attributes->merge(['class'=>'table table-'.$type])}}>
@@ -10,7 +9,7 @@
             <th><a href="#" wire:click='orderByName'>Nome</a></th>
             <th><a href="#" wire:click='orderByValue'>Meta de Valor</a></th>
             <th>Dias Restantes</th>
-            @if (Auth::user() && Route::is('dashProjetos'))
+            @if (Auth::user())
                 <th colspan="2">Ações</th>
             @endif
         </tr>
@@ -18,7 +17,7 @@
     <tbody>
         @foreach($projetos as $projeto)
             <tr>
-                @if (Auth::user() && Route::is('dashProjetos'))
+                @if (Auth::user())
                     <td><a href="{{route('singleDashProj',$projeto->id) }}">{{ $projeto->id }}</a></td>
                     <td><a href="{{route('singleDashProj',$projeto->id) }}">{{ $projeto->nome }}</a></td>
                 @else
@@ -27,7 +26,7 @@
                 @endif
                 <td>R${{$projeto->meta_de_valor}}</td>
                 <td>{{$projeto->dias_para_atingir}}</td>
-                @if (Auth::user() && Route::is('dashProjetos'))
+                @if (Auth::user())
                     <td class='actions'>
                         <x-primary-button class='px-2 py-1 mx-0 my-0'
                         @click=" idmodal = 'modal-upd-{{ $projeto->id }}'">

@@ -63,7 +63,7 @@ Route::controller(ProdutoController::class)
     ->group(function () {
 
         Route::prefix('/produtos')->group(function () {
-            Route::get('/', 'index')->name('produtos');
+            Route::get('/', 'index')->name('produtos')->middleware('auth');
             Route::get('/{id}', 'show')->name('single');
         });
 
@@ -86,7 +86,7 @@ Route::controller(ProjetosController::class)
     ->group(function () {
 
         Route::prefix('/projetos')->group(function () {
-            Route::get('/', 'index')->name('projetos');
+            Route::get('/', 'index')->name('projetos')->middleware('auth');
             Route::get('/{id}', 'show');
         });
 
@@ -109,7 +109,7 @@ Route::controller(RecompensasController::class)
     ->group(function () {
 
         Route::prefix('/recompensas')->group(function () {
-            Route::get('/', 'index')->name('recompensas');
+            Route::get('/', 'index')->name('recompensas')->middleware('auth');
             Route::get('/{id}', 'show');
         });
 
@@ -132,7 +132,7 @@ Route::controller(UsuariosController::class)
     ->group(function () {
 
         Route::prefix('/usuarios')->group(function () {
-            Route::get('/', 'index')->name('usuarios');
+            Route::get('/', 'index')->name('usuarios')->middleware('auth');
             Route::get('/{id}', 'show');
         });
 

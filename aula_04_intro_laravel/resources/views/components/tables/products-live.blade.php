@@ -1,5 +1,4 @@
 <div x-data="{
-    open: false,
     idmodal:null,
 }">
 <table {{ $attributes->merge(['class' => 'table table-' . $type]) }}>
@@ -11,7 +10,7 @@
             <th>Quantidade de Estoque</th>
             <th><a href="#" wire:click='orderByPrice'>Preço</a></th>
             <th>Importado</th>
-            @if(Auth::user() && Route::is('dashboard'))
+            @if(Auth::user())
                 <th colspan="2">Ações</th>
             @endif
         </tr>
@@ -19,9 +18,9 @@
     <tbody>
         @foreach ($produtos as $produto)
             <tr>
-                @if(Auth::user() && Route::is('dashboard'))
-                     <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->id }}</a></td>
-                     <td><a href="{{route('produto.single-dash',$produto->id) }}">{{ $produto->nome }}</a></td>
+                @if(Auth::user())
+                     <td><a href="{{route('singleDash',$produto->id) }}">{{ $produto->id }}</a></td>
+                     <td><a href="{{route('singleDash',$produto->id) }}">{{ $produto->nome }}</a></td>
                 @else
                     <td><a href="/produtos/{{ $produto->id }}">{{ $produto->id }}</a></td>
                     <td><a href="/produtos/{{ $produto->id }}">{{ $produto->nome }}</a></td>
@@ -33,7 +32,7 @@
                 <td align="center">
                     <input type="checkbox" disabled {{ $produto->importado ? 'checked' : '' }}>
                 </td>
-                @if(Auth::user() && Route::is('dashboard'))
+                @if(Auth::user())
                     <td class='actions'>
                         <x-primary-button class='px-2 py-1 mx-0 my-0'
                         @click=" idmodal = 'modal-upd-{{ $produto->id }}'">

@@ -1,5 +1,5 @@
-{{-- <div class=" w-fit h-auto m-2 p-3 drop-shadow-2xl bg-white self-center rounded-md pt-6"> --}}
-    <div class="flex flex-col justify-center w-fit shadow dark:bg-gray-700 h-fit m-0 p-3 bg-white self-center rounded-md">
+<div class=" w-fit h-auto m-2 p-3 drop-shadow-2xl dark:bg-gray-800 self-center rounded-md pt-6">
+    <div class="flex flex-col justify-center w-fit shadow bg-gray-300 h-fit m-0 p-3 bg-white self-center rounded-md">
         <div x-data="{
             produto: @js($produto),
             update() {
@@ -62,3 +62,4 @@
             </div>
         </div>
     </div>
+</div>
