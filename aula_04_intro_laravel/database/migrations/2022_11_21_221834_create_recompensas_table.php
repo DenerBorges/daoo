@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('recompensas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('projeto_id')
+                    ->constrained()
+                    ->cascadeOnDelete();
             $table->text('titulo');
             $table->text('descricao');
             $table->float('valor');

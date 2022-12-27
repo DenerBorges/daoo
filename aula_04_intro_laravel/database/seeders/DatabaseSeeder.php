@@ -24,5 +24,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Aula 06',
             'email' => 'aula@example.com',
         ]);
+
+        \App\Models\Projeto::factory(5)
+                ->hasRecompensas(7)
+                ->create();
     }
 }
