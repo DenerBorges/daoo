@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                    ->constrained()
+                    ->cascadeOnDelete();
             $table->text('nome');
             $table->float('meta_de_valor');
             $table->integer('dias_para_atingir');

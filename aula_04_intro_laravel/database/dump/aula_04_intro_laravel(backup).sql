@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Dez-2022 às 23:18
+-- Tempo de geração: 24-Dez-2022 às 19:14
 -- Versão do servidor: 10.4.21-MariaDB
 -- versão do PHP: 8.0.10
 
@@ -111,6 +111,23 @@ CREATE TABLE `produtos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id`, `nome`, `descricao`, `qtd_estoque`, `preco`, `importado`, `created_at`, `updated_at`) VALUES
+(111, 'Samsumg A5 - 2017', 'Samsumg A5 2017 2GB Exynos 8Core', 2, 4500.00, 0, NULL, '2022-12-18 00:08:50'),
+(112, 'Notebook DELL Inspiron 15', 'I5 7600HQ 8GBMen GTX1030m SSD 1TB', 300, 8500.00, 1, NULL, '2022-12-03 20:16:25'),
+(113, 'Notebook Samsumg Gamer', 'I7 10800HQ 16GB MEM NVIDIA-RTX2060m SSD 2TB', 150, 17500.00, 0, NULL, NULL),
+(114, 'SSD 4TB', 'SSD SAMSUMG EVO 860 4TB', 200, 5750.00, 0, NULL, NULL),
+(115, 'SSD 2TB', 'SSD SAMSUMG EVO 860 2TB', 150, 3750.00, 0, NULL, NULL),
+(121, 'SSD 4TB', 'SSD WESTERN DIGITAL', 50, 4150.00, 0, NULL, NULL),
+(122, 'GAINWARD PHOENIX RTX3080ti', 'GPU NVIDIA 12GB MEM GDDR6 256BITS GAINWARD PHOENIX ', 30, 14150.00, 0, NULL, NULL),
+(123, 'GAINWARD PHOENIX RTX3070', 'GPU NVIDIA 8GB MEM GDDR6 256BITS GAINWARD PHOENIX ', 60, 7399.00, 0, NULL, NULL),
+(124, 'ECHO DOT ALEXA', 'AMAZON ALEX ECHO DOT 3 GEN SMART SPEAKER', 1000, 200.00, 0, NULL, NULL),
+(125, 'Monitor Asus BK 35\'\'', 'LED 35\" 3440x1440 Preto 1 HDMI(v1.4)', 500, 9990.00, 1, NULL, '2022-12-03 21:11:25'),
+(135, 'aaaaaaaaaaa', 'ssssssssssssss', 400, 18.00, 1, '2022-12-24 20:31:35', '2022-12-24 20:53:35');
+
 -- --------------------------------------------------------
 
 --
@@ -119,13 +136,22 @@ CREATE TABLE `produtos` (
 
 CREATE TABLE `projetos` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
   `nome` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_de_valor` double(8,2) NOT NULL,
   `dias_para_atingir` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `projetos`
+--
+
+INSERT INTO `projetos` (`id`, `nome`, `meta_de_valor`, `dias_para_atingir`, `created_at`, `updated_at`) VALUES
+(1, 'O Livro', 200000.00, 160, NULL, NULL),
+(2, 'Cartoon Mania', 140000.00, 215, NULL, NULL),
+(3, 'NetherWorld', 360000.00, 360, NULL, NULL),
+(4, 'Pc Engine', 240000.00, 230, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,13 +161,22 @@ CREATE TABLE `projetos` (
 
 CREATE TABLE `recompensas` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `projeto_id` bigint(20) UNSIGNED NOT NULL,
   `titulo` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `descricao` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `valor` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `recompensas`
+--
+
+INSERT INTO `recompensas` (`id`, `titulo`, `descricao`, `valor`, `created_at`, `updated_at`) VALUES
+(1, 'Pequeno Ajudante', 'Você ganha uma caneca com a logo da marca e adesivos!', 20.00, NULL, NULL),
+(2, 'Ajudando Médio', 'Ganha duas canecas, adesivos e camisetas com a logo da marca!', 45.00, NULL, NULL),
+(3, 'Grande Ajudante', 'Ganha duas canecas, duas camisas, adesivos e um pacote de wallpapers digitais!', 80.00, NULL, NULL),
+(4, 'Ajudante Supremo', 'Ganha duas canecas, duas camisas, adesivos, pacote de wallpapers digitais e uma coleção de livros da marca!', 120.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,11 +190,17 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `idade` int(11) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'User Aula 06', 'aula@example.com', '2022-12-07 21:10:13', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'RKMt2Wjjqf', '2022-12-07 21:10:13', '2022-12-07 21:10:13');
 
 -- --------------------------------------------------------
 
@@ -176,6 +217,16 @@ CREATE TABLE `usuarios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `idade`, `created_at`, `updated_at`) VALUES
+(1, 'Roberto Nunes', 'robertojunior@gmail.com', 'r0b3rt0', 46, NULL, NULL),
+(2, 'Amanda Cardoso', 'amandar@hotmail.com', '4m4nd4', 25, NULL, NULL),
+(3, 'João Silveira', 'joaosilveira@gmail.com', 'j040123', 32, NULL, NULL),
+(4, 'Lúcia Lemos', 'lucialemos@gmail.com', 'luc14', 36, NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -218,15 +269,13 @@ ALTER TABLE `produtos`
 -- Índices para tabela `projetos`
 --
 ALTER TABLE `projetos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `projetos_user_id_foreign` (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `recompensas`
 --
 ALTER TABLE `recompensas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `recompensas_projeto_id_foreign` (`projeto_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `users`
@@ -267,47 +316,31 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT de tabela `projetos`
 --
 ALTER TABLE `projetos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `recompensas`
 --
 ALTER TABLE `recompensas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `projetos`
---
-ALTER TABLE `projetos`
-  ADD CONSTRAINT `projetos_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Limitadores para a tabela `recompensas`
---
-ALTER TABLE `recompensas`
-  ADD CONSTRAINT `recompensas_projeto_id_foreign` FOREIGN KEY (`projeto_id`) REFERENCES `projetos` (`id`) ON DELETE CASCADE;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

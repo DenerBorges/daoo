@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Projeto extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'meta_de_valor', 'dias_para_atingir'];
+    protected $fillable = ['nome', 'meta_de_valor', 'dias_para_atingir', 'user_id'];
 
-    public function recompesas()
+    public function recompensas()
     {
         return $this->hasMany(Recompensa::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
