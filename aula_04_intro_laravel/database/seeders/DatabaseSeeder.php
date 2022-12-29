@@ -16,16 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        \App\Models\User::factory()
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+
+        \App\Models\User::factory(5)
                 ->hasProjetos(2)
-                ->create([
-                    'name' => 'User Aula 06',
-                    'email' => 'aula@example.com',
-                ]);
+                ->create();
 
         \App\Models\Projeto::factory(5)
                 ->hasRecompensas(7)

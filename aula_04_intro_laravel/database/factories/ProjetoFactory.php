@@ -19,7 +19,8 @@ class ProjetoFactory extends Factory
         return [
             "nome" => fake()->text(20),
             "meta_de_valor" => fake()->randomFloat(2, 100, 10000),
-            "dias_para_atingir" => fake()->randomNumber(3, false)
+            "dias_para_atingir" => fake()->randomNumber(3, false),
+            "user_id" => fake()->numberBetween(1, 5)
         ];
     }
 }
