@@ -23,7 +23,7 @@ class ProjetoController extends Controller
     {
         try {
             return response()->json(Projeto::findOrFail($id));
-        } catch (\Exception $error) {
+        } catch (Exception $error) {
             $message = [
                 "erro" => "O projeto com o id: $id não foi encontrado!",
                 "exception" => $error->getMessage()
@@ -90,5 +90,10 @@ class ProjetoController extends Controller
             ];
             return response()->json($message, $status);
         }
+    }
+
+    public function recompensas(Projeto $projeto)
+    {
+        return response()->json($projeto->load('recompensas'));
     }
 }

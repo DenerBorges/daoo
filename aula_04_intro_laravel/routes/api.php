@@ -20,13 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projeto', [ProjetoController::class, 'index']);
-Route::get('projeto', [ProjetoController::class, 'show']);
-Route::post('projeto', [ProjetoController::class, 'store']);
-Route::put('projeto', [ProjetoController::class, 'update']);
-Route::delete('projeto', [ProjetoController::class, 'remove']);
+Route::get('projetos', [ProjetoController::class, 'index']);
+Route::get('projetos/{id}', [ProjetoController::class, 'show']);
+Route::post('projetos', [ProjetoController::class, 'store']);
+Route::put('projetos/{id}', [ProjetoController::class, 'update']);
+Route::delete('projetos/{id}', [ProjetoController::class, 'remove']);
 
-Route::apiResource('recompensa', RecompensaController::class);
-Route::get('recompensa/{recompensa}/projetos',
-        [RecompensaController::class, 'recompensas']
+Route::apiResource('recompensas', RecompensaController::class);
+
+Route::get('projetos/{projeto}/recompensas',
+        [ProjetoController::class, 'recompensas']
 );
