@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\ProjetoController;
 use App\Http\Controllers\Api\RecompensaController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,14 +22,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projetos', [ProjetoController::class, 'index']);
-Route::get('projetos/{id}', [ProjetoController::class, 'show']);
-Route::post('projetos', [ProjetoController::class, 'store']);
-Route::put('projetos/{id}', [ProjetoController::class, 'update']);
-Route::delete('projetos/{id}', [ProjetoController::class, 'remove']);
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('projetos', [ProjetoController::class, 'index']);
+    Route::get('projetos/{id}', [ProjetoController::class, 'show']);
+    Route::post('projetos', [ProjetoController::class, 'store']);
+    Route::put('projetos/{id}', [ProjetoController::class, 'update']);
+    Route::delete('projetos/{id}', [ProjetoController::class, 'remove']);
 
-Route::apiResource('recompensas', RecompensaController::class);
+    Route::get('projetos/{projeto}/recompensas',
+            [ProjetoController::class, 'recompensas']
+    );
 
-Route::get('projetos/{projeto}/recompensas',
-        [ProjetoController::class, 'recompensas']
-);
+    Route::put('/projetos/{projeto}', [ProjetoController::class, 'update'])
+        ->middleware('ability:is-admin');
+
+    Route::apiResource('recompensas', RecompensaController::class);
+
+    Route::apiResource('users', UserController::class);
+});
+
+Route::post('/users',[UserController::class,'store']);
+Route::post('login',[LoginController::class,'login']);

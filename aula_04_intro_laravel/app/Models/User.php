@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'idade'
+        'idade',
+        'is_admin'
     ];
 
     public function projetos()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjetoRequest;
 use App\Models\Projeto;
 use Illuminate\Http\Request;
 use \Exception;
@@ -33,9 +34,14 @@ class ProjetoController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(ProjetoRequest $request)
     {
+        $statusHttp = 500;
         try {
+            if (!$request->user()->tokenCan('is-admin')) {
+                $statusHttp = 403;
+                throw new Exception("Não possui permissão!");
+            }
             $newProjeto = $request->all();
             $storedProjeto = Projeto::create($newProjeto);
             return response()->json([
@@ -47,13 +53,13 @@ class ProjetoController extends Controller
                 "Erro:" => "Erro ao cadastrar novo projeto",
                 "Exception:" => $error->getMessage()
             ];
-            $status = 401;
-            return response()->json($message, $status);
+            return response()->json($message, $statusHttp);
         }
     }
 
     public function update(Request $request, int $id)
     {
+        $statusHttp = 500;
         try {
             $data = $request->all();
             $updProjeto = Projeto::findOrFail($id);
@@ -67,8 +73,7 @@ class ProjetoController extends Controller
                 "Erro:" => "Erro ao atualizar novo projeto",
                 "Exception:" => $error->getMessage()
             ];
-            $status = 401;
-            return response()->json($message, $status);
+            return response()->json($message, $statusHttp);
         }
     }
 
