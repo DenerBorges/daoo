@@ -33,7 +33,12 @@ class RecompensaController extends Controller
      */
     public function store(RecompensaRequest $request)
     {
+        $statusHttp = 500;
         try {
+            if (!$request->user()->tokenCan('is-admin')) {
+                $statusHttp = 403;
+                throw new Exception("Não possui permissão!");
+            }
             $newRecompensa = $request->all();
             $storedRecompensa = Recompensa::create($newRecompensa);
             return response()->json([
@@ -45,8 +50,7 @@ class RecompensaController extends Controller
                 "Erro:" => "Erro ao cadastrado novo Recompensa",
                 "Exception:" => $error->getMessage()
             ];
-            $status = 401;
-            return response()->json($message, $status);
+            return response()->json($message, $statusHttp);
         }
     }
 
@@ -70,7 +74,12 @@ class RecompensaController extends Controller
      */
     public function update(Request $request, Recompensa $recompensa)
     {
+        $statusHttp = 500;
         try {
+            if (!$request->user()->tokenCan('is-admin')) {
+                $statusHttp = 403;
+                throw new Exception("Não possui permissão!");
+            }
             $data = $request->all();
             $recompensa->update($data);
             return response()->json([
@@ -82,8 +91,7 @@ class RecompensaController extends Controller
                 "Erro" => "Erro ao atualizar recompensa",
                 "Exception:" => $error->getMessage()
             ];
-            $status = 401;
-            return response()->json($message, $status);
+            return response()->json($message, $statusHttp);
         }
     }
 
@@ -93,9 +101,14 @@ class RecompensaController extends Controller
      * @param  \App\Models\Recompensa $recompensa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recompensa $recompensa)
+    public function destroy(Request $request, Recompensa $recompensa)
     {
+        $statusHttp = 500;
         try {
+            if (!$request->user()->tokenCan('is-admin')) {
+                $statusHttp = 403;
+                throw new Exception("Não possui permissão!");
+            }
             if (!$recompensa->delete())
                 throw new Exception("Erro não detectado, tente mais tarde!");
 
@@ -108,7 +121,6 @@ class RecompensaController extends Controller
                 "Erro" => "Erro ao deletar a recompensa!",
                 "Exception" => $error->getMessage()
             ];
-            $statusHttp = 404;
             return response()->json($responseError, $statusHttp);
         }
     }

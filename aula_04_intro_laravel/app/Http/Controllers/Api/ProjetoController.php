@@ -57,16 +57,15 @@ class ProjetoController extends Controller
         }
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, Projeto $projeto)
     {
         $statusHttp = 500;
         try {
             $data = $request->all();
-            $updProjeto = Projeto::findOrFail($id);
-            $updProjeto->update($data);
+            $projeto->update($data);
             return response()->json([
                 'message' => 'Projeto atualizado com sucesso!',
-                'projeto' => $updProjeto
+                'projeto' => $projeto
             ]);
         } catch(Exception $error) {
             $message = [
@@ -77,16 +76,16 @@ class ProjetoController extends Controller
         }
     }
 
-    public function remove(int $id)
+    public function remove(Projeto $projeto)
     {
         $status = 404;
         try {
-            if (!Projeto::findOrFail($id)->delete()) {
+            if (!$projeto->delete()) {
                 $status = 500;
-                throw new Exception("Erro ao deletar projeto de id: $id");
+                throw new Exception("Erro ao deletar projeto: $projeto");
             }
             return response()->json([
-                'message' => "Projeto id: $id removido com sucesso!"
+                'message' => "Projeto removido com sucesso!"
             ]);
         } catch (Exception $error) {
             $message = [

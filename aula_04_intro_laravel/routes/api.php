@@ -26,14 +26,17 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('projetos', [ProjetoController::class, 'index']);
     Route::get('projetos/{id}', [ProjetoController::class, 'show']);
     Route::post('projetos', [ProjetoController::class, 'store']);
-    Route::put('projetos/{id}', [ProjetoController::class, 'update']);
-    Route::delete('projetos/{id}', [ProjetoController::class, 'remove']);
+    Route::put('projetos/{projeto}', [ProjetoController::class, 'update']);
+    Route::delete('projetos/{projeto}', [ProjetoController::class, 'remove']);
 
     Route::get('projetos/{projeto}/recompensas',
             [ProjetoController::class, 'recompensas']
     );
 
     Route::put('/projetos/{projeto}', [ProjetoController::class, 'update'])
+        ->middleware('ability:is-admin');
+
+    Route::delete('/projetos/{projeto}', [ProjetoController::class, 'remove'])
         ->middleware('ability:is-admin');
 
     Route::apiResource('recompensas', RecompensaController::class);

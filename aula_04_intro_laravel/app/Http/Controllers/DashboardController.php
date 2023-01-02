@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
-use App\Models\Projetos;
-use App\Models\Recompensas;
+use App\Models\Projeto;
+use App\Models\Recompensa;
 use App\Models\User;
-use App\Models\Usuarios;
+use App\Models\Usuario;
 
 class DashboardController extends Controller
 {
@@ -23,31 +23,31 @@ class DashboardController extends Controller
 
     public function projeto() {
         return view('dashboardProjetos',
-            ['projetos'=>Projetos::all()]);
+            ['projetos'=>Projeto::all()]);
     }
 
     public function singleProjeto($id) {
         return view('Pages.Projetos.single-dash',
-            ['projeto'=>Projetos::find($id) ]);
+            ['projeto'=>Projeto::find($id) ]);
     }
 
     public function recompensa() {
         return view('dashboardRecompensas',
-            ['recompensas'=>Recompensas::all()]);
+            ['recompensas'=>Recompensa::all()]);
     }
 
     public function singleRecompensa($id) {
         return view('Pages.Recompensas.single-dash',
-            ['recompensa'=>Recompensas::find($id) ]);
+            ['recompensa'=>Recompensa::find($id) ]);
     }
 
     public function usuario() {
         return view('dashboardUsuarios',
-            ['usuarios'=>Usuarios::all()]);
+            ['usuarios'=>Usuario::all()]);
     }
 
     public function singleUsuario($id) {
         return view('Pages.Usuarios.single-dash',
-            ['usuario'=>Usuarios::find($id) ]);
+            ['usuario'=>Usuario::find($id) ]);
     }
 }
