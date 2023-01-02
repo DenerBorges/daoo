@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetosController;
 use App\Http\Controllers\RecompensasController;
 use App\Http\Controllers\UsuariosController;
-use App\Models\Produto;
+use App\Models\Projeto;
 use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Rotas Welcome
 Route::get('/', function () {
-    return view('landing', ['produtos'=>Produto::all()]);
+    return view('landing', ['projetos'=>Projeto::all()]);
 })->name('landing');
 
 // Rotas Dashboard

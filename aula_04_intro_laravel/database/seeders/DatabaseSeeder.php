@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'Admin',
+            'nome' => 'Admin',
             'email' => 'admin@example.com',
             'idade' => 34,
             'is_admin' => true

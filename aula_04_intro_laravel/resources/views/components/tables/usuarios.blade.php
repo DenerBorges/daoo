@@ -5,7 +5,6 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Email</th>
-            <th>Senha</th>
             <th>Idade</th>
             @if (Auth::user() && Route::is('dashUsuarios'))
                 <th>Ações</th>
@@ -23,8 +22,7 @@
                     <td><a href="/usuarios/{{ $usuario->id }}">{{ $usuario->nome }}</a></td>
                 @endif
                 <td>{{$usuario->email}}</td>
-                <td>{{$usuario->senha}}</td>
-                <td>{{($usuario->idade)}}</td>
+                <td>{{$usuario->idade}}</td>
                 @if (Auth::user() && Route::is('dashUsuarios'))
                     <td>
                         <a href="{{route('editusu',$usuario->id)}}">editar</a> |

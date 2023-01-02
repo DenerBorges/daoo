@@ -8,7 +8,6 @@
             <th><a href="#" wire:click='orderBy'>ID</a></th>
             <th><a href="#" wire:click='orderByName'>Nome</a></th>
             <th>Email</th>
-            <th>Senha</th>
             <th><a href="#" wire:click='orderByYearsOld'>Idade</a></th>
             @if (Auth::user())
                 <th colspan="2">Ações</th>
@@ -26,7 +25,6 @@
                     <td><a href="/usuarios/{{ $usuario->id }}">{{ $usuario->nome }}</a></td>
                 @endif
                 <td>{{$usuario->email}}</td>
-                <td>{{$usuario->senha}}</td>
                 <td>{{($usuario->idade)}}</td>
                 @if (Auth::user())
                     <td class='actions'>

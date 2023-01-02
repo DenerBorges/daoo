@@ -25,11 +25,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => 'required | string | max:50',
+            'nome'      => 'required | string | max:50',
             'email'     => 'required | email | unique:users',
-            'password'  => 'required | min:8',
+            'senha'     => 'required | min:8',
             'is_admin'  =>  'nullable | boolean',
-            'idade' => 'required | numeric | min:18 | max:100'
+            'idade'     => 'required | numeric | min:18 | max:100'
         ];
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Usuarios;
+use App\Models\User;
 use Exception;
 use Livewire\Component;
 
@@ -26,7 +26,7 @@ class Users extends Component
     public function orderBy($column = 'id')
     {
         $this->orderColumn = $column;
-        $this->usuarios = Usuarios::orderBy(
+        $this->usuarios = User::orderBy(
             $this->orderColumn,
             $this->orderAsc ? 'asc' : 'desc'
         )->get();
@@ -53,7 +53,7 @@ class Users extends Component
         ];
 
         try {
-            Usuarios::create($usuarios);
+            User::create($usuarios);
             $this->clear();
             $this->orderAsc = false;
             $this->orderBy();
@@ -72,7 +72,7 @@ class Users extends Component
 
     public function remove($id)
     {
-        if (!Usuarios::destroy($id))
+        if (!User::destroy($id))
             return "Erro!";
         $this->orderAsc = !$this->orderAsc;
         $this->orderBy($this->orderColumn);
@@ -88,7 +88,7 @@ class Users extends Component
             "senha" => $this->senha,
             "idade" => $this->idade,
         ];
-        Usuarios::findOrFail($id)->update($usuarios);
+        User::findOrFail($id)->update($usuarios);
         $this->orderAsc = !$this->orderAsc;
         $this->orderBy($this->orderColumn);
         $this->clear();
