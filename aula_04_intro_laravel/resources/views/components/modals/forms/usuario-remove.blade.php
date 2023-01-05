@@ -4,7 +4,7 @@
     </div>
     <ul>
         <li>Email: {{$usuario->email}}</li>
-        <li>Senha: {{$usuario->senha}}</li>
+        <li>Senha: {{$usuario->password}}</li>
         <li>Idade: {{$usuario->idade}}</li>
     </ul>
     <form id="{{ $usuario->id }}" wire:submit.prevent="remove({{ $usuario->id }})" method="POST">

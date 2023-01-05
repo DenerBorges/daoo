@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
         return [
             'nome'      => 'required | string | max:50',
             'email'     => 'required | email | unique:users',
-            'senha'     => 'required | min:8',
+            'password'     => 'required | min:8',
             'is_admin'  =>  'nullable | boolean',
             'idade'     => 'required | numeric | min:18 | max:100'
         ];

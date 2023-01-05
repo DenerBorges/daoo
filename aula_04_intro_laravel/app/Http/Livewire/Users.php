@@ -14,7 +14,7 @@ class Users extends Component
 
     public $nome;
     public $email;
-    public $senha;
+    public $password;
     public $idade;
     public $idusu;
 
@@ -48,7 +48,7 @@ class Users extends Component
         $usuarios = [
             "nome" => $this->nome,
             "email" => $this->email,
-            "senha" => $this->senha,
+            "password" => $this->password,
             "idade" => $this->idade,
         ];
 
@@ -66,7 +66,7 @@ class Users extends Component
     {
         $this->nome = '';
         $this->email = '';
-        $this->senha = '';
+        $this->password = '';
         $this->idade = 0;
     }
 
@@ -85,7 +85,7 @@ class Users extends Component
         $usuarios = [
             "nome" => $this->nome,
             "email" => $this->email,
-            "senha" => $this->senha,
+            "password" => $this->password,
             "idade" => $this->idade,
         ];
         User::findOrFail($id)->update($usuarios);

@@ -8,7 +8,7 @@
                     console.log({ usuario: this.usuario });
                     $wire.set('nome', this.usuario.nome)
                     $wire.set('email', this.usuario.email)
-                    $wire.set('senha', this.usuario.senha)
+                    $wire.set('password', this.usuario.password)
                     $wire.set('idade', this.usuario.idade)
                     $wire.update(this.usuario.id)
                 } else {
@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td>Senha:</td>
-                        <td><input x-model="usuario.senha" type="password" name="senha"/></td>
+                        <td><input x-model="usuario.password" type="password" name="password"/></td>
                     </tr>
                     <tr>
                         <td>Idade:</td>

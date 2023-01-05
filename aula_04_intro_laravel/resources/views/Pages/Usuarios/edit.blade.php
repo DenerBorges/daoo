@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td>Senha:</td>
-                <td><input type="text" name="senha" value="{{$usuario->senha}}"/></td>
+                <td><input type="text" name="password" value="{{$usuario->password}}"/></td>
             </tr>
             <tr>
                 <td>Idade:</td>

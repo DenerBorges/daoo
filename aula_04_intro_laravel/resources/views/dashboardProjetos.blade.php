@@ -26,15 +26,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h2 class='text-4xl'>Users</h2>
-                    @if (isset($users) && $users->count() > 0)
+                    <h2 class='text-4xl'>Usuários Autenticados</h2>
+                    @if (isset($usuarios) && $usuarios->count() > 0)
                         <ul>
-                            @foreach ($users as $user)
-                                <li>{{ $user->name }}</li>
+                            @foreach ($usuarios as $usuario)
+                                <li>{{ $usuario->nome }}</li>
                             @endforeach
                         </ul>
                     @else
-                        <p>Usuário não encontrados! </p>
+                        <p>Usuários Autenticados não encontrados! </p>
                     @endif
                 </div>
             </div>

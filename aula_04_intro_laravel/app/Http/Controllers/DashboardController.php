@@ -6,7 +6,6 @@ use App\Models\Produto;
 use App\Models\Projeto;
 use App\Models\Recompensa;
 use App\Models\User;
-use App\Models\Usuario;
 
 class DashboardController extends Controller
 {
@@ -43,11 +42,11 @@ class DashboardController extends Controller
 
     public function usuario() {
         return view('dashboardUsuarios',
-            ['usuarios'=>Usuario::all()]);
+            ['usuarios'=>User::all()]);
     }
 
     public function singleUsuario($id) {
         return view('Pages.Usuarios.single-dash',
-            ['usuario'=>Usuario::find($id) ]);
+            ['usuario'=>User::find($id) ]);
     }
 }

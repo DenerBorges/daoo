@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <th>Senha</th>
-                    <td>{{$usuario->senha}}</td>
+                    <td>{{$usuario->password}}</td>
                 </tr>
                 <tr>
                     <th>Idade</th>

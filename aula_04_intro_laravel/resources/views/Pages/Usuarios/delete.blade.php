@@ -3,7 +3,7 @@
         <h1>{{$usuario->nome}}</h1>
         <ul>
             <li>Email: {{$usuario->email}}</li>
-            <li>Senha: {{$usuario->senha}}</li>
+            <li>Senha: {{$usuario->password}}</li>
             <li>Idade: {{$usuario->idade}}</li>
         </ul>
         <form action="{{route('removeusu',$usuario->id)}}" method="post">

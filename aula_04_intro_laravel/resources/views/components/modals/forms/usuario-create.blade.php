@@ -19,7 +19,7 @@
                     </tr>
                     <tr>
                         <td>Senha:</td>
-                        <td><input wire:model='senha' type="password" name="senha" /></td>
+                        <td><input wire:model='password' type="password" name="password" /></td>
                     </tr>
                     <tr>
                         <td>Idade:</td>
